@@ -1,0 +1,10 @@
+probe syscall.open
+{
+    printf ("%s(%d) open (%s)\n", execname(), pid(), argstr)
+}
+
+probe begin
+{
+    printf("Open Monitoring Started...\n");
+}
+

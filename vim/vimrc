@@ -1,0 +1,47 @@
+set nocompatible
+set bs=indent,eol,start
+
+syntax on
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set number
+set ignorecase
+set nobackup
+set nowritebackup
+set guifont=Lucida_Console:h12:cANSI
+
+command Ls !ls
+command Pwd !pwd
+command Mk !make
+command Mc !make clean
+command Up !svn up
+command Ci !svn ci -m ""
+command Di !svn diff
+command St !svn status
+command Tg !ctags -R .
+
+function InsertTabWrapper()
+      let col = col('.') - 1 
+      if !col || getline('.')[col - 1] !~ '\k'
+          return "\<tab>"
+      else
+          return "\<c-n>"
+      endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+
+inoremap <f3> <esc>:AT<cr>a
+nnoremap <f3> :AT<cr>
+
+inoremap <f6> <esc>:shell<cr>a
+nnoremap <f6> :shell<cr>
+
+inoremap <f7> <esc>gTa
+nnoremap <f7> gT
+
+inoremap <f8> <esc>gta
+nnoremap <f8> gt
+

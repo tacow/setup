@@ -1,0 +1,10 @@
+probe syscall.execve
+{
+    printf("%s(%d) execve %s\n", execname(), pid(), argstr)
+}
+
+probe begin
+{
+    printf("Exec Monitoring Started...\n");
+}
+
