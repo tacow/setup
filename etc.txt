@@ -1,0 +1,18 @@
+# /etc/sysconfig/network-scripts/ifcfg-eth0
+DEVICE=eth0
+BOOTPROTO=static
+IPADDR=xxx.xxx.xxx.xxx
+NETMASK=xxx.xxx.xxx.xxx
+GATEWAY=xxx.xxx.xxx.xxx
+DOMAIN=xxx.com
+DNS1=xxx.xxx.xxx.xxx
+DNS2=xxx.xxx.xxx.xxx
+ONBOOT=yes
+
+# /etc/sysconfig/network
+HOSTNAME=xxx.xxx.com
+
+# /etc/hosts
+127.0.0.1   localhost localhost.localdomain xxx.xxx.com
+::1         localhost localhost.localdomain xxx.xxx.com
+
