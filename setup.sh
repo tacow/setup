@@ -23,6 +23,9 @@ mkdir -p ~/.vim/plugin
 cp -f ${SCRIPT_PATH}/vim/a.vim ~/.vim/plugin
 cp -f ${SCRIPT_PATH}/vim/vimrc ~/.vimrc
 
+# Setup top
+cp -f ${SCRIPT_PATH}/top/toprc ~/.toprc
+
 # Setup systemtap
 mkdir -p ~/stap
 cp -f ${SCRIPT_PATH}/stap/* ~/stap
