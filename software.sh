@@ -11,4 +11,5 @@ yum install -y strace
 yum install -y systemtap
 yum install -y tree
 yum install -y sysstat
+yum install -y yum-utils
 
