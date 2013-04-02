@@ -1,4 +1,4 @@
 ssh-keygen
 cat /home/yintao/.ssh/id_rsa.pub
 git clone 'git@github.com:tacow/setup.git'
-
+git clone 'git@github.com:tacow/test.git'
