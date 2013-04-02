@@ -3,6 +3,7 @@ yum install -y git
 yum install -y subversion
 yum install -y vim-enhanced
 yum install -y man
+yum install -y make
 yum install -y gcc-c++
 yum install -y gdb
 yum install -y valgrind
