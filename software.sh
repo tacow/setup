@@ -8,6 +8,7 @@ yum install -y gcc-c++
 yum install -y gdb
 yum install -y valgrind
 yum install -y strace
+yum install -y systemtap
 yum install -y tree
 yum install -y sysstat
 
