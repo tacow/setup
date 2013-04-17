@@ -32,3 +32,11 @@ cp -f ${SCRIPT_PATH}/stap/* ~/stap
 
 rm -f ~/setup.tgz
 
+# Setup sudoers
+MY_NAME=$(whoami)
+cat >> /tmp/sudoers.append << EOF
+${MY_NAME} ALL=(ALL) ALL
+EOF
+sudo sh -c "cat /tmp/sudoers.append >> /etc/sudoers"
+rm -f /tmp/sudoers.append
+
