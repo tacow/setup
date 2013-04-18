@@ -26,12 +26,12 @@ echo -n "Install softwares now? (y/n) "
 read yn
 if [ $yn = "y" ]
 then
-    if IsOS CentOS
+    if IsOS centos
     then
         sh ${SCRIPT_DIR}/software_centos.sh
     fi
 
-    if IsOS Ubuntu
+    if IsOS ubuntu
     then
         sh ${SCRIPT_DIR}/software_ubuntu.sh
     fi
