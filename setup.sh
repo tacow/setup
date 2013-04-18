@@ -10,14 +10,16 @@ IsOS() {
     fi
 }
 
+SCRIPT_DIR=$(dirname $0)
+
 if IsOS CentOS
 then
-    sh setup_centos.sh
+    sh ${SCRIPT_DIR}/setup_centos.sh
 fi
 
 if IsOS Ubuntu
 then
-    sh setup_ubuntu.sh
+    sh ${SCRIPT_DIR}/setup_ubuntu.sh
 fi
 
 echo -n "Install softwares now? (y/n) "
@@ -26,12 +28,12 @@ if [ $yn = "y" ]
 then
     if IsOS CentOS
     then
-        sh software_centos.sh
+        sh ${SCRIPT_DIR}/software_centos.sh
     fi
 
     if IsOS Ubuntu
     then
-        sh software_ubuntu.sh
+        sh ${SCRIPT_DIR}/software_ubuntu.sh
     fi
 fi
 
