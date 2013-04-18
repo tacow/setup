@@ -5,7 +5,7 @@ SCRIPT_PATH=~/setup
 # Setup shell
 cat >> ~/.bashrc << EOF
 export LANG=zh_CN.GB18030
-export PATH=\${PATH}:${SCRIPT_PATH}/utils
+export PATH=\${PATH}:/usr/local/sbin:/usr/sbin:/sbin:${SCRIPT_PATH}/utils
 export PS1='[\u@\h \W]\$ '
 export PS2='> '
 export PS4='+ '
@@ -37,6 +37,6 @@ MY_NAME=$(whoami)
 cat >> /tmp/sudoers.append << EOF
 ${MY_NAME} ALL=(ALL) ALL
 EOF
-sudo sh -c "cat /tmp/sudoers.append >> /etc/sudoers"
+su -c "cat /tmp/sudoers.append >> /etc/sudoers"
 rm -f /tmp/sudoers.append
 
