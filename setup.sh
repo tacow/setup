@@ -1,7 +1,7 @@
 #!/bin/sh
 
 IsOS() {
-    n=$(grep $1 /etc/issue | wc -l)
+    n=$(grep -i $1 /etc/issue | wc -l)
     if [ $n -ge 1 ]
     then
         return 0
@@ -12,12 +12,12 @@ IsOS() {
 
 SCRIPT_DIR=$(dirname $0)
 
-if IsOS CentOS
+if IsOS centos
 then
     sh ${SCRIPT_DIR}/setup_centos.sh
 fi
 
-if IsOS Ubuntu
+if IsOS ubuntu
 then
     sh ${SCRIPT_DIR}/setup_ubuntu.sh
 fi
