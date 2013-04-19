@@ -12,7 +12,7 @@ IsOS() {
 
 SCRIPT_DIR=$(dirname $0)
 
-if IsOS centos
+if ( IsOS centos || IsOS fedora )
 then
     sh ${SCRIPT_DIR}/setup_centos.sh
 fi
@@ -26,7 +26,7 @@ echo -n "Install softwares now? (y/n) "
 read yn
 if [ $yn = "y" ]
 then
-    if IsOS centos
+    if ( IsOS centos || IsOS fedora )
     then
         sh ${SCRIPT_DIR}/software_centos.sh
     fi
