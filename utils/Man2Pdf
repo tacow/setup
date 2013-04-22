@@ -1,7 +1,9 @@
 #!/bin/sh
+CMD_NAME=$(basename $0)
+
 if [ $# -lt 1 ]
 then
-    echo "$0 <section> [name]"
+    echo "${CMD_NAME} <section> [name]"
     exit
 fi
 

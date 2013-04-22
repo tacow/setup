@@ -1,7 +1,9 @@
 #!/bin/bash
+CMD_NAME=$(basename $0)
+
 if [ $# -lt 1 ]
 then
-    echo "find_from.sh [what] (extension) (where)"
+    echo "${CMD_NAME} [what] (extension) (where)"
     exit
 fi
 

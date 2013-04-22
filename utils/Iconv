@@ -1,7 +1,9 @@
 #!/bin/sh
+CMD_NAME=$(basename $0)
+
 if [ $# -lt 2 ]
 then
-    echo "$0 [from charset] [to charset] [files]"
+    echo "${CMD_NAME} [from charset] [to charset] [files]"
     exit
 fi
 

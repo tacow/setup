@@ -1,7 +1,9 @@
 #!/bin/sh
+CMD_NAME=$(basename $0)
+
 if [ $# -lt 2 ]
 then
-    echo "rename [old_pattern] [new_pattern]"
+    echo "${CMD_NAME} [old_pattern] [new_pattern]"
     exit
 fi
 

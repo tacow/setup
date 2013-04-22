@@ -1,7 +1,9 @@
 #!/bin/sh
+CMD_NAME=$(basename $0)
+
 if [ $# -lt 1 ]
 then
-    echo "mt_valgrind [program]"
+    echo "${CMD_NAME} [program]"
     exit
 fi
 

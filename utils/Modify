@@ -1,7 +1,9 @@
 #!/bin/sh
+CMD_NAME=$(basename $0)
+
 if [ $# -lt 2 ]
 then
-    echo "modify.sh [pattern] [destination] (files)"
+    echo "${CMD_NAME} [pattern] [destination] (files)"
     exit
 fi
 if [ $# -gt 2 ]

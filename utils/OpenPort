@@ -1,7 +1,9 @@
 #!/bin/sh
+CMD_NAME=$(basename $0)
+
 if [ $# -lt 1 ]
 then
-    echo "uti_openport [port] <protocol>"
+    echo "${CMD_NAME} [port] <protocol>"
     echo "protocol: \"tcp\" or \"udp\", default is \"tcp\""
     exit
 fi
