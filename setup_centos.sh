@@ -12,10 +12,21 @@ export PS4='+ '
 alias ls='ls -F --color=tty'
 alias ll='ls -lF --color=tty'
 alias lh='ls -lhF --color=tty'
-alias df='df -h'
-alias du='du -sh *'
-alias hist=history
-alias Ps='ps -eo cmd,pid,user,stime,etime'
+alias Df='df -h'
+alias Du='du -sh *'
+alias Hi=history
+alias Ps='ps -eo cmd,pid,ppid,user,stime,etime'
+alias Co='svn co'
+alias Ci='svn ci -m ""'
+alias Up='svn up'
+alias Di='svn diff'
+alias St='svn status'
+alias If='svn info'
+alias Lg='svn log -v -l 5'
+alias Dc='svn diff -c'
+alias Mk='make'
+alias Mc='make clean'
+alias Tg='ctags -R .'
 EOF
 
 # Setup VIM
