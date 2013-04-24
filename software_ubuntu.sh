@@ -5,6 +5,7 @@ sudo apt-get install -y make
 sudo apt-get install -y gcc
 sudo apt-get install -y g++
 sudo apt-get install -y gdb
+sudo apt-get install -y pstack
 sudo apt-get install -y valgrind
 sudo apt-get install -y systemtap
 sudo apt-get install -y tree
