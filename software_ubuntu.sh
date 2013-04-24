@@ -10,4 +10,6 @@ sudo apt-get install -y valgrind
 sudo apt-get install -y systemtap
 sudo apt-get install -y tree
 sudo apt-get install -y sysstat
+sudo apt-get install -y ghostscript
+sudo apt-get install -y lrzsz
 
