@@ -29,6 +29,8 @@ alias If='svn info'
 alias Lg='svn log -v -l 5'
 alias Dc='svn diff -c'
 alias Mk='make'
+alias Mr='make release'
+alias Md='make debug'
 alias Mc='make clean'
 alias Tg='ctags -R .'
 EOF

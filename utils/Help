@@ -11,4 +11,5 @@ echo "OpenPort    -- Open TCP/UDP port"
 echo "Rename      -- Rename"
 echo "RmLn        -- Remove lines"
 echo "Valgrind    -- valgrind"
+echo "WatchStack  -- Watch program stacks"
 echo
