@@ -12,4 +12,6 @@ sudo apt-get install -y tree
 sudo apt-get install -y sysstat
 sudo apt-get install -y ghostscript
 sudo apt-get install -y lrzsz
+sudo apt-get install -y zip
+sudo apt-get install -y unzip
 
