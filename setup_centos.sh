@@ -17,6 +17,7 @@ alias Du='du -sh *'
 alias Hi=history
 alias Ps='ps -eo cmd,pid,ppid,user,stime,etime'
 alias Co='svn co'
+alias Ex='svn export'
 alias Ci='svn ci -m ""'
 alias Up='svn up'
 alias Ad='svn add'
