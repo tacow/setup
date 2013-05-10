@@ -3,7 +3,7 @@
 SCRIPT_PATH=~/setup
 
 # Erase old setup
-${SCRIPT_PATH}/erase_my_script.awk < ~/.bashrc > /tmp/.bashrc
+awk -f ${SCRIPT_PATH}/erase_my_script.awk < ~/.bashrc > /tmp/.bashrc
 cp -f /tmp/.bashrc ~
 
 # Setup shell
