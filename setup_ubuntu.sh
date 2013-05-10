@@ -2,7 +2,12 @@
 
 SCRIPT_PATH=~/setup
 
+# Erase old setup
+${SCRIPT_PATH}/erase_my_script.awk < ~/.bashrc > /tmp/.bashrc
+cp -f /tmp/.bashrc ~
+
 # Setup shell
+#My script begin
 cat >> ~/.bashrc << EOF
 export LANG=zh_CN.GB18030
 export LANGUAGE=zh_CN.GB18030
@@ -34,6 +39,7 @@ alias Mr='make release'
 alias Md='make debug'
 alias Mc='make clean'
 alias Tg='ctags -R .'
+#My script end
 EOF
 
 # Setup VIM
