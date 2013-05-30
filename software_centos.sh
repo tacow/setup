@@ -14,5 +14,6 @@ sudo yum install -y ltrace
 sudo yum install -y systemtap
 sudo yum install -y tree
 sudo yum install -y sysstat
+sudo yum install -y dstat
 sudo yum install -y yum-utils
 
