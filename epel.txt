@@ -1,0 +1,5 @@
+http://download.fedoraproject.org/pub/epel
+
+http://mirrors.neusoft.edu.cn/epel//5/i386/epel-release-5-4.noarch.rpm
+http://mirrors.neusoft.edu.cn/epel//6/i386/epel-release-6-8.noarch.rpm
+
