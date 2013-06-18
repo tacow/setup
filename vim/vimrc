@@ -45,3 +45,6 @@ nnoremap <f7> gT
 inoremap <f8> <esc>gta
 nnoremap <f8> gt
 
+inoremap <f9> <esc>:tabe 
+nnoremap <f9> :tabe 
+
