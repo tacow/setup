@@ -48,3 +48,12 @@ nnoremap <f8> gt
 inoremap <f9> <esc>:tabe 
 nnoremap <f9> :tabe 
 
+inoremap <f10> <esc><c-w>wa
+nnoremap <f10> <c-w>w
+
+inoremap <f11> <esc>:sp 
+nnoremap <f11> :sp 
+
+inoremap <f12> <esc>:vsp 
+nnoremap <f12> :vsp 
+
