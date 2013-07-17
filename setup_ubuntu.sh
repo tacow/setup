@@ -15,6 +15,8 @@ export PATH=\${PATH}:/usr/local/sbin:/usr/sbin:/sbin:${SCRIPT_PATH}/utils
 export PS1='[\u@\h \W]\$ '
 export PS2='> '
 export PS4='+ '
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;31'
 alias ls='ls -F --color=tty'
 alias ll='ls -lF --color=tty'
 alias lh='ls -lhF --color=tty'
