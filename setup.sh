@@ -12,6 +12,8 @@ IsOS() {
 
 SCRIPT_DIR=$(dirname $0)
 
+sh ${SCRIPT_DIR}/setup_common.sh
+
 if ( IsOS centos || IsOS fedora )
 then
     sh ${SCRIPT_DIR}/setup_centos.sh
