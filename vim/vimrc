@@ -1,5 +1,5 @@
 set nocompatible
-set bs=indent,eol,start
+set backspace=indent,eol,start
 
 syntax on
 set tabstop=4

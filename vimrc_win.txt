@@ -1,0 +1,16 @@
+set nocompatible
+set backspace=indent,eol,start
+
+syntax on
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set number
+set ignorecase
+set nobackup
+set nowritebackup
+set guifont=Lucida_Console:h12:cANSI
+colorscheme desert
+
