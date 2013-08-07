@@ -16,3 +16,6 @@ HOSTNAME=xxx.xxx.com
 127.0.0.1   localhost localhost.localdomain xxx.xxx.com
 ::1         localhost localhost.localdomain xxx.xxx.com
 
+# /etc/yum.repos.d/CentOS-Debuginfo.repo
+enabled=1
+
