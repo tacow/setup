@@ -11,6 +11,6 @@ set number
 set ignorecase
 set nobackup
 set nowritebackup
-set guifont=Lucida_Console:h12:cANSI
+set guifont=Lucida_Console:h16:cANSI
 colorscheme desert
 
