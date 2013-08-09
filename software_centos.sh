@@ -17,4 +17,5 @@ sudo yum install -y sysstat
 sudo yum install -y dstat
 sudo yum install -y yum-utils
 sudo yum install -y lrzsz
+sudo yum install -y ctags
 
