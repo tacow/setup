@@ -12,6 +12,9 @@ set ignorecase
 set nobackup
 set nowritebackup
 set guifont=Lucida_Console:h12:cANSI
+set scrolloff=5
+set laststatus=2
+set statusline=\ File:\ %F%m%r%=Row:\ %l/%L,\ Col:\ %c
 
 command Ls !ls -l
 command Pwd !pwd
