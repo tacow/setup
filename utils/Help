@@ -11,6 +11,8 @@ echo "OpenPort    -- Open TCP/UDP port"
 echo "Pdb         -- Python debug"
 echo "Rename      -- Rename"
 echo "RmLn        -- Remove lines"
+echo "Stp         -- Stap"
+echo "Stpl        -- Stap list"
 echo "Valgrind    -- valgrind"
 echo "WatchStack  -- Watch program stacks"
 echo

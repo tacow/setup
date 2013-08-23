@@ -1,0 +1,20 @@
+probe syscall.fork.return
+{
+    printf("%s(%d) fork %s\n", execname(), pid(), retstr)
+}
+
+probe syscall.execve
+{
+    printf("%s(%d) execve %s\n", execname(), pid(), argstr)
+}
+
+probe syscall.exit
+{
+    printf("%s(%d) exit %s\n", execname(), pid(), argstr)
+}
+
+probe begin
+{
+    printf("Process Monitoring Started...\n");
+}
+

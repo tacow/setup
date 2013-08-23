@@ -1,0 +1,12 @@
+#!/bin/sh
+
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [name]"
+    exit
+fi
+
+NAME=$1
+sudo stap ~/setup/stap/${NAME}.stp
