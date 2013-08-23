@@ -20,4 +20,6 @@ sudo yum install -y lrzsz
 sudo yum install -y ctags
 sudo yum install -y bind-utils
 sudo yum install -y tcpdump
+sudo yum install -y redhat-lsb
+sudo yum install -y java-openjdk
 
