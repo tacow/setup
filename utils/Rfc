@@ -7,8 +7,13 @@ then
     exit
 fi
 
-wget "http://www.ietf.org/rfc/rfc$1.txt"
-if [ -r "rfc$1.txt" ]
+FILENAME="rfc$1.txt"
+if [ ! -r ${FILENAME} ]
 then
-    vim "rfc$1.txt"
+    wget "http://www.ietf.org/rfc/rfc$1.txt"
+fi
+
+if [ -r ${FILENAME} ]
+then
+    vim ${FILENAME}
 fi
