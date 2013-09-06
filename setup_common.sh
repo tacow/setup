@@ -52,3 +52,5 @@ cp -f ${SCRIPT_PATH}/vim/vimrc ~/.vimrc
 # Setup top
 cp -f ${SCRIPT_PATH}/top/toprc ~/.toprc
 
+# Setup gdb
+cp -f ${SCRIPT_PATH}/gdb/gdbinit ~/.gdbinit
