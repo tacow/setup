@@ -1,0 +1,13 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 2 ]
+then
+    echo "${CMD_NAME} [interface] [expression]"
+    exit
+fi
+
+INTERFACE=$1
+EXPRESSION=$2
+
+sudo tcpdump -i ${INTERFACE} -X -n -nn ${EXPRESSION}
