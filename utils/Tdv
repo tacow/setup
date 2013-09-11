@@ -8,6 +8,7 @@ then
 fi
 
 INTERFACE=$1
-EXPRESSION=$2
+shift
+EXPRESSION=$*
 
 sudo tcpdump -i ${INTERFACE} -X -n -nn ${EXPRESSION}

@@ -8,7 +8,9 @@ then
 fi
 
 INTERFACE=$1
-FILENAME=$2
-EXPRESSION=$3
+shift
+FILENAME=$1
+shift
+EXPRESSION=$*
 
 sudo tcpdump -i ${INTERFACE} -w ${FILENAME} ${EXPRESSION}
