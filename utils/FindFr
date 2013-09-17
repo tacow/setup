@@ -23,7 +23,7 @@ fi
 
 if [ -z ${EXT} ]
 then
-    find ${WHERE} \( -name "*.h" -or -name "*.c" -or -name "*.cpp" \) -exec grep -Hn ${WHAT} {} \;
+    find ${WHERE} \( -name "*.h" -or -name "*.hpp" -or -name "*.c" -or -name "*.cpp" \) -exec grep -Hn ${WHAT} {} \;
 else
     find ${WHERE} -name "*.${EXT}" -exec grep -Hn ${WHAT} {} \;
 fi
