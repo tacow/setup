@@ -27,6 +27,7 @@ command St !svn status
 command Tg !ctags -R .
 command If !svn info
 command Lg !svn log -v -l 10
+command Fx %!FormatXml
 
 function InsertTabWrapper()
       let col = col('.') - 1 

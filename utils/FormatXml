@@ -1,0 +1,13 @@
+#!/bin/sh
+
+CONTENT_FILE=/tmp/content.xml
+FORMATED_FILE=/tmp/formated.xml
+
+cat > ${CONTENT_FILE}
+XMLLINT_INDENT="    " xmllint --format ${CONTENT_FILE} > ${FORMATED_FILE} 2>/dev/null
+if [ $? -eq 0 ]
+then
+    cat ${FORMATED_FILE}
+else
+    cat ${CONTENT_FILE}
+fi

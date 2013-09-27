@@ -3,6 +3,7 @@
 echo
 echo "CpMf        -- Copy makefile"
 echo "FindFr      -- Find from"
+echo "FormatXml   -- Format xml file"
 echo "Iconv       -- iconv"
 echo "Man2Pdf     -- man to pdf"
 echo "MergeLn     -- Merge lines"
