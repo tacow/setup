@@ -15,6 +15,7 @@ set guifont=Lucida_Console:h12:cANSI
 set scrolloff=5
 set laststatus=2
 set statusline=\ File:\ %F%m%r%=Row:\ %l/%L,\ Col:\ %c
+set hlsearch
 
 command Ls !ls -l
 command Pwd !pwd
