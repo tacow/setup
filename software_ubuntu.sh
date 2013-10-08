@@ -15,4 +15,5 @@ sudo apt-get install -y lrzsz
 sudo apt-get install -y zip
 sudo apt-get install -y unzip
 sudo apt-get install -y vim
+sudo apt-get install -y openssh-server
 
