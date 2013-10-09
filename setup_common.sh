@@ -9,8 +9,9 @@ cp -f /tmp/.bashrc ~
 # Setup shell
 cat >> ~/.bashrc << EOF
 #My script begin
-export LANG=zh_CN.GB18030
-export LANGUAGE=zh_CN.GB18030
+export LANG=zh_CN.gb18030
+export LANGUAGE=zh_CN.gb18030
+export LC_ALL=zh_CN.gb18030
 export PATH=\${PATH}:/usr/local/sbin:/usr/sbin:/sbin:${SCRIPT_PATH}/utils
 export PS1='[\u@\h \W]\$ '
 export PS2='> '
@@ -41,6 +42,7 @@ alias Mr='make release'
 alias Md='make debug'
 alias Mc='make clean'
 alias Tg='ctags -R .'
+alias Utf8='export LANG=zh_CN.utf8 LANGUAGE=zh_CN.utf8 LC_ALL=zh_CN.utf8'
 #My script end
 EOF
 
