@@ -1,0 +1,11 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} (parameters)"
+    exit
+fi
+
+strace -f -T -tt -s 256 $@
+
