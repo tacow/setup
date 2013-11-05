@@ -13,4 +13,4 @@ FILENAME=$1
 shift
 EXPRESSION=$*
 
-sudo tcpdump -i ${INTERFACE} -C 10 -Z root -z gzip -w ${FILENAME} ${EXPRESSION}
+sudo tcpdump -i ${INTERFACE} -C 10 -Z root -z gzip -s0 -w ${FILENAME} ${EXPRESSION}

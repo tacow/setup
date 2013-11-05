@@ -11,4 +11,4 @@ INTERFACE=$1
 shift
 EXPRESSION=$*
 
-sudo tcpdump -i ${INTERFACE} -X -n -nn ${EXPRESSION}
+sudo tcpdump -i ${INTERFACE} -X -n -nn -s0 ${EXPRESSION}
