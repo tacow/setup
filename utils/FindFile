@@ -1,0 +1,11 @@
+#!/bin/bash
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [filename]"
+    exit
+fi
+
+CURDIR=$(pwd)
+find ${CURDIR} -name "$1"
