@@ -23,4 +23,5 @@ sudo yum install -y tcpdump
 sudo yum install -y redhat-lsb
 sudo yum install -y java-openjdk
 sudo yum install -y lsof
+sudo yum install -y boost-devel
 
