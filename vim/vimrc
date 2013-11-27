@@ -16,6 +16,7 @@ set scrolloff=5
 set laststatus=2
 set statusline=\ File:\ %F%m%r%=Row:\ %l/%L,\ Col:\ %c
 set hlsearch
+set autochdir
 
 command Ls !ls -l
 command Pwd !pwd
