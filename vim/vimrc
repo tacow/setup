@@ -43,6 +43,9 @@ inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <f3> <esc>:AT<cr>a
 nnoremap <f3> :AT<cr>
 
+inoremap <f5> <esc>gg=G<c-o><c-o>a
+nnoremap <f5> gg=G<c-o><c-o>
+
 inoremap <f6> <esc>:shell<cr>a
 nnoremap <f6> :shell<cr>
 
