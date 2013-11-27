@@ -41,8 +41,15 @@ function InsertTabWrapper()
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
-inoremap <f1> <esc>:vsp ~/setup/vim/help.txt<cr>
-nnoremap <f1> :vsp ~/setup/vim/help.txt<cr>
+function Help()
+    if (expand("%") != "help.txt") 
+        execute "vsp ~/setup/vim/help.txt"
+    else
+        execute "q"
+    endif
+endfunction
+inoremap <f1> <esc>:call Help()<cr>
+nnoremap <f1> :call Help()<cr>
 
 inoremap <f3> <esc>:AT<cr>a
 nnoremap <f3> :AT<cr>
