@@ -4,6 +4,9 @@
 # 需要编译的子目录，如subdir1:subdir2:subdir3，由冒号分隔，这些子目录中也需要有Makefile
 SUBDIRS = 
 
+# 每次都需要重新编译的文件，由冒号分隔
+REBUILD_FILES = 
+
 # 附加的编译选项
 CFLAGS = 
 # 宏定义列表，如def1:def2:def3，由冒号分隔，对应gcc的-D选项

@@ -7,6 +7,8 @@ VPATH = ${OBJECT_PATH_RELEASE} ${OBJECT_PATH_DEBUG}
 
 SUBDIRS2 = ${subst :, ,${SUBDIRS}}
 
+REBUILD_FILES2 = ${subst :, ,${REBUILD_FILES}}
+
 HEADERS = ${wildcard *.h}
 
 C_SOURCES = ${wildcard *.c}
@@ -79,7 +81,7 @@ endif
 
 all: release debug
 
-release: subdirbuildrelease prebuildrelease ${DESTINATION_RELEASE}
+release: subdirbuildrelease touchrebuildfiles prebuildrelease ${DESTINATION_RELEASE}
 
 ${DESTINATION_RELEASE}: ${OBJECTS_RELEASE} Makefile
 	@echo
@@ -98,7 +100,7 @@ endif
 	${AFTER_BUILD_RELEASE}
 	@echo
 
-debug: subdirbuilddebug prebuilddebug ${DESTINATION_DEBUG}
+debug: subdirbuilddebug touchrebuildfiles prebuilddebug ${DESTINATION_DEBUG}
 
 ${DESTINATION_DEBUG}: ${OBJECTS_DEBUG} Makefile
 	@echo
@@ -132,6 +134,12 @@ veryclean: clean
 	done
 	rm -f ${DESTINATION_RELEASE}
 	rm -f ${DESTINATION_DEBUG}
+
+touchrebuildfiles:
+	@for REBUILD_FILE in ${REBUILD_FILES2}; \
+	do \
+		touch $${REBUILD_FILE}; \
+	done
 
 subdirbuildrelease:
 	@for SUBDIR in ${SUBDIRS2}; \
