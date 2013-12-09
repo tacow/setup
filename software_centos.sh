@@ -18,6 +18,7 @@ sudo yum install -y dstat
 sudo yum install -y yum-utils
 sudo yum install -y lrzsz
 sudo yum install -y ctags
+sudo yum install -y cscope
 sudo yum install -y bind-utils
 sudo yum install -y tcpdump
 sudo yum install -y redhat-lsb
