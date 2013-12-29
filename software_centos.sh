@@ -3,6 +3,7 @@ sudo yum install -y git
 sudo yum install -y subversion
 sudo yum install -y vim-enhanced
 sudo yum install -y wget
+sudo yum install -y lynx
 sudo yum install -y man
 sudo yum install -y man-pages
 sudo yum install -y make
