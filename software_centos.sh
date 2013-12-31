@@ -1,4 +1,5 @@
 #!/bin/sh
+sudo yum update -y
 sudo yum install -y git
 sudo yum install -y subversion
 sudo yum install -y vim-enhanced
@@ -22,8 +23,9 @@ sudo yum install -y ctags
 sudo yum install -y cscope
 sudo yum install -y bind-utils
 sudo yum install -y tcpdump
-sudo yum install -y redhat-lsb
+sudo yum install -y redhat-lsb-core
 sudo yum install -y java-openjdk
 sudo yum install -y lsof
 sudo yum install -y boost-devel
+sudo yum install -y httpd-tools
 
