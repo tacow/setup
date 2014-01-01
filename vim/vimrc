@@ -17,6 +17,7 @@ set laststatus=2
 set statusline=\ File:\ %F%m%r%=Row:\ %l/%L,\ Col:\ %c
 set hlsearch
 set autochdir
+set hidden
 
 command Ls !ls -l
 command Pwd !pwd
@@ -30,6 +31,7 @@ command Tg !ctags -R .
 command If !svn info
 command Lg !svn log -v -l 10
 command Fx %!FormatXml
+command Sw w !sudo tee % > /dev/null
 
 function InsertTabWrapper()
       let col = col('.') - 1 

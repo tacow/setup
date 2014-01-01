@@ -44,6 +44,7 @@ alias Md='make debug'
 alias Mc='make clean'
 alias Tg='ctags -R .'
 alias Utf8='export LANG=zh_CN.utf8 LANGUAGE=zh_CN.utf8 LC_ALL=zh_CN.utf8'
+alias vim='vim -p'
 #My script end
 EOF
 
