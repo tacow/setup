@@ -26,6 +26,11 @@ sudo yum install -y tcpdump
 sudo yum install -y redhat-lsb-core
 sudo yum install -y java-openjdk
 sudo yum install -y lsof
-sudo yum install -y boost-devel
 sudo yum install -y httpd-tools
 
+sudo yum install -y boost-devel
+sudo yum install -y zlib-devel
+sudo yum install -y pcre-devel
+sudo yum install -y libcurl-devel
+sudo yum install -y openssl-devel
+sudo yum install -y mysql-devel
