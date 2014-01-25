@@ -1,0 +1,15 @@
+#!/bin/sh
+UTILS_DIR=~/setup/utils
+
+if [ $# -lt 1 ]
+then
+    ls ${UTILS_DIR}
+    exit
+fi
+
+UTIL_NAME=$1
+
+if [ -f ${UTILS_DIR}/${UTIL_NAME} ]
+then
+    cat ${UTILS_DIR}/${UTIL_NAME}
+fi
