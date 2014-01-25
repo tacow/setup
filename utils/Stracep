@@ -1,0 +1,13 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [PID]"
+    exit
+fi
+
+PID=$1
+
+strace -f -T -tt -s 256 -p ${PID}
+
