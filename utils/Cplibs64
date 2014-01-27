@@ -1,0 +1,20 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [libname1] [libname2] ..."
+    exit
+fi
+
+for LIBNAME in $*
+do
+    if [ -f /lib64/${LIBNAME} ]
+    then
+        cp -f /lib64/${LIBNAME} .
+    elif [ -f /usr/lib64/${LIBNAME} ]
+    then
+        cp -f /usr/lib64/${LIBNAME} .
+    fi
+done
+
