@@ -1,0 +1,21 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+MakeArScript() {
+    echo "CREATE $1"
+    shift
+    for LIB in $*
+    do
+        echo "ADDLIB ${LIB}"
+    done
+    echo "SAVE"
+    echo "END"
+}
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [full archive] [sub archive 1] [sub archive 2] ..."
+    exit
+fi
+
+MakeArScript $* | ar -M

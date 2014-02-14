@@ -82,6 +82,8 @@ endif
 all: release debug
 
 release: subdirbuildrelease touchrebuildfiles prebuildrelease ${DESTINATION_RELEASE}
+	${AFTER_BUILD_RELEASE}
+	@echo
 
 ${DESTINATION_RELEASE}: ${OBJECTS_RELEASE} Makefile
 	@echo
@@ -97,10 +99,10 @@ ifeq (${DESTINATION_TYPE}, SHARED_OBJECT)
 	g++ ${PLATFORM_FLAG} -shared ${SONAME_FLAG_RELEASE} -o ${DESTINATION_RELEASE} ${addprefix ${OBJECT_PATH_RELEASE}/,${OBJECTS_RELEASE}} ${MODULES_RELEASE2} ${LIBRARY_DIRS_FLAG} ${LIBRARYS_FLAG} ${PTHREAD_LIB}
 endif
 	@echo
-	${AFTER_BUILD_RELEASE}
-	@echo
 
 debug: subdirbuilddebug touchrebuildfiles prebuilddebug ${DESTINATION_DEBUG}
+	${AFTER_BUILD_DEBUG}
+	@echo
 
 ${DESTINATION_DEBUG}: ${OBJECTS_DEBUG} Makefile
 	@echo
@@ -115,8 +117,6 @@ endif
 ifeq (${DESTINATION_TYPE}, SHARED_OBJECT)
 	g++ ${PLATFORM_FLAG} -shared ${SONAME_FLAG_DEBUG} -o ${DESTINATION_DEBUG} ${addprefix ${OBJECT_PATH_DEBUG}/,${OBJECTS_DEBUG}} ${MODULES_DEBUG2} ${LIBRARY_DIRS_FLAG} ${LIBRARYS_FLAG} ${PTHREAD_LIB}
 endif
-	@echo
-	${AFTER_BUILD_DEBUG}
 	@echo
 
 clean:
