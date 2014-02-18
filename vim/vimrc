@@ -22,7 +22,9 @@ set hidden
 command Ls !ls -l
 command Pwd !pwd
 command Mk !make
+command Mk8 !make -j 8
 command Mc !make clean
+command Mvc !make veryclean
 command Up !svn up
 command Ci !svn ci -m ""
 command Di !svn diff
