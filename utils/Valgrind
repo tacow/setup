@@ -7,4 +7,4 @@ then
     exit
 fi
 
-valgrind --trace-children=yes --tool=memcheck --leak-check=full --log-file="valgrind.%p" $*
+valgrind --trace-children=yes --time-stamp=yes --tool=memcheck --leak-check=full --log-file="valgrind.%p" $*
