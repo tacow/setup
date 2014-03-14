@@ -1,0 +1,5 @@
+#!/bin/sh
+echo "Old time: `date`"
+sudo ntpdate cn.pool.ntp.org
+sudo hwclock -w
+echo "New time: `date`"

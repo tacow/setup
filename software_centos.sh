@@ -29,6 +29,7 @@ sudo yum install -y lsof
 sudo yum install -y httpd-tools
 sudo yum install -y nc
 sudo yum install -y ghostscript
+sudo yum install -y ntpdate
 
 sudo yum install -y boost-devel
 sudo yum install -y zlib-devel
