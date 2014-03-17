@@ -44,7 +44,7 @@ alias Mr='make release'
 alias Md='make debug'
 alias Mc='make clean'
 alias Mvc='make veryclean'
-alias Tg='ctags -R .'
+alias Tg='ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .'
 alias Utf8='export LANG=zh_CN.utf8 LANGUAGE=zh_CN.utf8 LC_ALL=zh_CN.utf8'
 alias vim='vim -p'
 alias Diff='diff -y -W 100'
@@ -52,8 +52,8 @@ alias Diff='diff -y -W 100'
 EOF
 
 # Setup VIM
-mkdir -p ~/.vim/plugin
-cp -f ${SCRIPT_PATH}/vim/a.vim ~/.vim/plugin
+mkdir -p ~/.vim
+cp -R ${SCRIPT_PATH}/vim/vim/* ~/.vim/
 cp -f ${SCRIPT_PATH}/vim/vimrc ~/.vimrc
 
 # Setup top
