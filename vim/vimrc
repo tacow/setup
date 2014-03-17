@@ -57,8 +57,8 @@ endfunction
 inoremap <f1> <esc>:call Help()<cr>
 nnoremap <f1> :call Help()<cr>
 
-inoremap <f2> <esc>:e .<cr>
-nnoremap <f2> :e .<cr>
+inoremap <f2> <esc>:tabe .<cr>
+nnoremap <f2> :tabe .<cr>
 
 inoremap <f3> <esc>:AT<cr>a
 nnoremap <f3> :AT<cr>
