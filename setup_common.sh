@@ -48,6 +48,7 @@ alias Tg='ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .'
 alias Utf8='export LANG=zh_CN.utf8 LANGUAGE=zh_CN.utf8 LC_ALL=zh_CN.utf8'
 alias vim='vim -p'
 alias Diff='diff -y -W 100'
+echo; cal; echo
 #My script end
 EOF
 
