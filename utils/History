@@ -1,6 +1,4 @@
 #!/bin/sh
-UTILS_DIR=~/setup/utils
-
 if [ $# -lt 1 ]
 then
     history
