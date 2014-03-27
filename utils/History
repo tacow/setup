@@ -1,0 +1,10 @@
+#!/bin/sh
+UTILS_DIR=~/setup/utils
+
+if [ $# -lt 1 ]
+then
+    history
+else
+    PATTERN=$1
+    history | grep ${PATTERN}
+fi

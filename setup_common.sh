@@ -24,7 +24,7 @@ alias ll='ls -lF --color=tty'
 alias lh='ls -lhF --color=tty'
 alias Df='df -h'
 alias Du='du -sh *'
-alias Hi=history
+alias Hi='. History'
 alias Ps='ps -eo cmd,pid,ppid,user,stime,etime'
 alias Co='svn co'
 alias Ex='svn export'
