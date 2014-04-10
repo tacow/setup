@@ -20,6 +20,7 @@ set hlsearch
 set autochdir
 set hidden
 set completeopt=menu
+set tags=./tags,~/.systags
 
 command Ls !ls -l
 command Pwd !pwd
@@ -32,6 +33,7 @@ command Ci !svn ci -m ""
 command Di !svn diff
 command St !svn status
 command Tg !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
+command Stg !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=boost -f ~/.systags /usr/include/
 command If !svn info
 command Lg !svn log -v -l 10
 command Fx %!FormatXml
