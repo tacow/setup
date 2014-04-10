@@ -1,0 +1,17 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [URL]"
+    exit
+fi
+
+URL=$1
+while true
+do
+    if wget -c --timeout=60 "${URL}"
+    then
+        break
+    fi
+done
