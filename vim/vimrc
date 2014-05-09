@@ -26,6 +26,7 @@ command Ls !ls -l
 command Pwd !pwd
 command Mk !make
 command Mk8 !make -j 8
+command Mkf !make %.o
 command Mc !make clean
 command Mvc !make veryclean
 command Up !svn up
