@@ -33,6 +33,8 @@ sudo yum install -y graphviz
 sudo yum install -y ntpdate
 sudo yum install -y doxygen
 sudo yum install -y libstdc++-docs
+sudo yum install -y unix2dos
+sudo yum install -y dos2unix
 
 sudo yum install -y boost-devel
 sudo yum install -y zlib-devel
