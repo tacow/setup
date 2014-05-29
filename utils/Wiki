@@ -1,0 +1,11 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [keyword]"
+    exit
+fi
+KEYWORD=$1
+
+dig +short txt "${KEYWORD}.wp.dg.cx"
