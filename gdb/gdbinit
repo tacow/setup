@@ -1,1 +1,5 @@
 set pagination off
+
+define asm
+display/10i $pc
+end
