@@ -9,6 +9,8 @@ REBUILD_FILES =
 
 # 附加的编译选项
 CFLAGS = 
+# 附加的链接选项
+LDFLAGS = 
 # 宏定义列表，如def1:def2:def3，由冒号分隔，对应gcc的-D选项
 DEFINITIONS = 
 # 引入头文件目录列表，如inc_dir1:inc_dir2:inc_dir3，由冒号分隔，对应gcc的-I选项
