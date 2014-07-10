@@ -52,6 +52,14 @@ alias Utf8='export LANG=zh_CN.utf8 LANGUAGE=zh_CN.utf8 LC_ALL=zh_CN.utf8'
 alias vim='vim -p'
 alias Diff='diff -y -W 100'
 echo; cal; echo
+
+Inst() {
+    mkdir build
+    cd build
+    ../configure --prefix=/usr && make && sudo make install
+    cd ..
+}
+
 #My script end
 EOF
 
