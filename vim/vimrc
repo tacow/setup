@@ -32,6 +32,7 @@ command Mvc !make veryclean
 command Up !svn up
 command Ci !svn ci -m ""
 command Di !svn diff
+command Dif !svn diff %
 command St !svn status
 command Tg !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .
 command Stg !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=boost -f ~/.systags /usr/include/
