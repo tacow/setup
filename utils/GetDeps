@@ -1,0 +1,14 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+DEPS_DIR=deps
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [program]"
+    exit
+fi
+PROGRAM=$1
+
+LIB_FILES=`ldd ${PROGRAM} | awk '{ print $3 }' | grep so | xargs`
+rm -rf ${DEPS_DIR}; mkdir -p ${DEPS_DIR}
+cp ${LIB_FILES} ${DEPS_DIR}
