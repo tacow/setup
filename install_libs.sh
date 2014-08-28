@@ -23,3 +23,10 @@ cd build
 make -j 2
 sudo make install
 
+cd ${SOFTWARE_PATH}
+Wget 'http://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.gz'
+tar xzvf boost_1_56_0.tar.gz
+cd boost_1_56_0
+./bootstrap.sh --prefix=/usr/local
+./b2
+sudo ./b2 install
