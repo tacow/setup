@@ -63,6 +63,14 @@ make -j 2
 sudo make install
 
 cd ${SOFTWARE_PATH}
+Wget 'http://dev.mysql.com/get/Downloads/Connector-C/mysql-connector-c-6.1.5-src.tar.gz'
+tar xzvf mysql-connector-c-6.1.5-src.tar.gz
+cd mysql-connector-c-6.1.5-src
+cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr/local/
+make -j 2
+sudo make install
+
+cd ${SOFTWARE_PATH}
 Wget 'http://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.gz'
 tar xzvf boost_1_56_0.tar.gz
 cd boost_1_56_0
