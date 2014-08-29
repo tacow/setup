@@ -8,6 +8,7 @@ sudo yum install -y lynx
 sudo yum install -y man
 sudo yum install -y man-pages
 sudo yum install -y make
+sudo yum install -y cmake
 sudo yum install -y gcc-c++
 sudo yum install -y gdb
 sudo yum install -y valgrind
