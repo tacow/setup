@@ -4,6 +4,45 @@ SOFTWARE_PATH=~/software
 mkdir -p ${SOFTWARE_PATH}
 
 cd ${SOFTWARE_PATH}
+Wget 'http://zlib.net/zlib-1.2.8.tar.gz'
+tar xzvf zlib-1.2.8.tar.gz
+cd zlib-1.2.8
+./configure --prefix=/usr/local/
+make -j 2
+sudo make install
+
+cd ${SOFTWARE_PATH}
+Wget 'http://downloads.sourceforge.net/project/levent/libevent/libevent-2.0/libevent-2.0.21-stable.tar.gz'
+tar xzvf libevent-2.0.21-stable.tar.gz
+cd libevent-2.0.21-stable
+mkdir build
+cd build
+../configure --prefix=/usr/local/ --disable-openssl
+make -j 2
+sudo make install
+
+cd ${SOFTWARE_PATH}
+Wget 'http://www.fastcgi.com/dist/fcgi.tar.gz'
+tar xzvf fcgi.tar.gz
+cd fcgi-2.4.1-SNAP-0311112127/
+sed -i '1i#define EOF (-1)' libfcgi/fcgio.cpp
+mkdir build
+cd build
+../configure --prefix=/usr/local/
+make -j 2
+sudo make install
+
+cd ${SOFTWARE_PATH}
+Wget 'http://download.lighttpd.net/spawn-fcgi/releases-1.6.x/spawn-fcgi-1.6.4.tar.gz'
+tar xzvf spawn-fcgi-1.6.4.tar.gz
+cd spawn-fcgi-1.6.4
+mkdir build
+cd build
+../configure --prefix=/usr/local/
+make -j 2
+sudo make install
+
+cd ${SOFTWARE_PATH}
 Wget 'http://curl.haxx.se/download/curl-7.37.1.tar.gz'
 tar xzvf curl-7.37.1.tar.gz
 cd curl-7.37.1

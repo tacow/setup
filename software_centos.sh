@@ -37,10 +37,3 @@ sudo yum install -y unix2dos
 sudo yum install -y dos2unix
 sudo yum install -y mtr
 sudo yum install -y net-tools
-
-sudo yum install -y boost-devel
-sudo yum install -y zlib-devel
-sudo yum install -y pcre-devel
-sudo yum install -y libcurl-devel
-sudo yum install -y openssl-devel
-sudo yum install -y mysql-devel
