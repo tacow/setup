@@ -63,6 +63,14 @@ make -j 2
 sudo make install
 
 cd ${SOFTWARE_PATH}
+Wget 'http://www.cmake.org/files/v3.0/cmake-3.0.1.tar.gz'
+tar xzvf cmake-3.0.1.tar.gz
+cd cmake-3.0.1
+./configure --prefix=/usr/local/
+make -j 2
+sudo make install
+
+cd ${SOFTWARE_PATH}
 Wget 'http://dev.mysql.com/get/Downloads/Connector-C/mysql-connector-c-6.1.5-src.tar.gz'
 tar xzvf mysql-connector-c-6.1.5-src.tar.gz
 cd mysql-connector-c-6.1.5-src
