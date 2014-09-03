@@ -12,6 +12,14 @@ make -j 2
 sudo make install
 
 cd ${SOFTWARE_PATH}
+Wget 'http://www.openssl.org/source/openssl-1.0.1i.tar.gz'
+tar xzvf openssl-1.0.1i.tar.gz
+cd openssl-1.0.1i
+./config --prefix=/usr/local/ shared
+make -j 2
+sudo make install
+
+cd ${SOFTWARE_PATH}
 Wget 'http://downloads.sourceforge.net/project/levent/libevent/libevent-2.0/libevent-2.0.21-stable.tar.gz'
 tar xzvf libevent-2.0.21-stable.tar.gz
 cd libevent-2.0.21-stable
