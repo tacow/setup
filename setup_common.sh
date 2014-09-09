@@ -9,6 +9,7 @@ cp -f /tmp/.bashrc ~
 # Setup shell
 cat >> ~/.bashrc << EOF
 #My script begin
+export LD_LIBRARY_PATH=/usr/local/lib/:/usr/local/lib64/
 export LANG=zh_CN.gb18030
 export LANGUAGE=zh_CN.gb18030
 export LC_ALL=zh_CN.gb18030
