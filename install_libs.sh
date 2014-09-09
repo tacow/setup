@@ -10,6 +10,7 @@ cd zlib-1.2.8
 ./configure --prefix=/usr/local/
 make -j 2
 sudo make install
+sudo ldconfig
 
 cd ${SOFTWARE_PATH}
 Wget 'http://www.openssl.org/source/openssl-1.0.1i.tar.gz'
@@ -18,6 +19,7 @@ cd openssl-1.0.1i
 ./config --prefix=/usr/local/ shared
 make -j 2
 sudo make install
+sudo ldconfig
 
 cd ${SOFTWARE_PATH}
 Wget 'http://downloads.sourceforge.net/project/levent/libevent/libevent-2.0/libevent-2.0.21-stable.tar.gz'
@@ -28,6 +30,7 @@ cd build
 ../configure --prefix=/usr/local/ --disable-openssl
 make -j 2
 sudo make install
+sudo ldconfig
 
 cd ${SOFTWARE_PATH}
 Wget 'http://www.fastcgi.com/dist/fcgi.tar.gz'
@@ -39,6 +42,7 @@ cd build
 ../configure --prefix=/usr/local/
 make -j 2
 sudo make install
+sudo ldconfig
 
 cd ${SOFTWARE_PATH}
 Wget 'http://download.lighttpd.net/spawn-fcgi/releases-1.6.x/spawn-fcgi-1.6.4.tar.gz'
@@ -49,6 +53,7 @@ cd build
 ../configure --prefix=/usr/local/
 make -j 2
 sudo make install
+sudo ldconfig
 
 cd ${SOFTWARE_PATH}
 Wget 'http://curl.haxx.se/download/curl-7.37.1.tar.gz'
@@ -59,6 +64,7 @@ cd build
 ../configure --prefix=/usr/local/ --without-ssl --without-libidn --without-zlib
 make -j 2
 sudo make install
+sudo ldconfig
 
 cd ${SOFTWARE_PATH}
 Wget 'http://mirrors.hust.edu.cn/apache//xerces/c/3/sources/xerces-c-3.1.1.tar.gz'
@@ -69,6 +75,7 @@ cd build
 ../configure --prefix=/usr/local/ --disable-network
 make -j 2
 sudo make install
+sudo ldconfig
 
 cd ${SOFTWARE_PATH}
 Wget 'http://www.cmake.org/files/v3.0/cmake-3.0.1.tar.gz'
@@ -77,6 +84,7 @@ cd cmake-3.0.1
 ./configure --prefix=/usr/local/
 make -j 2
 sudo make install
+sudo ldconfig
 
 cd ${SOFTWARE_PATH}
 Wget 'http://dev.mysql.com/get/Downloads/Connector-C/mysql-connector-c-6.1.5-src.tar.gz'
@@ -85,6 +93,7 @@ cd mysql-connector-c-6.1.5-src
 cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr/local/
 make -j 2
 sudo make install
+sudo ldconfig
 
 cd ${SOFTWARE_PATH}
 Wget 'http://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.gz'
@@ -93,3 +102,4 @@ cd boost_1_56_0
 ./bootstrap.sh --prefix=/usr/local
 ./b2
 sudo ./b2 install
+sudo ldconfig
