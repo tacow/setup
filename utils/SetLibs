@@ -1,0 +1,20 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [new/ori]"
+    exit
+fi
+
+if [ $1 = "new" ]
+then
+    sudo cp -f ~/setup/local.conf /etc/ld.so.conf.d/
+    sudo ldconfig
+fi
+
+if [ $1 = "ori" ]
+then
+    sudo rm -f /etc/ld.so.conf.d/local.conf
+    sudo ldconfig
+fi
