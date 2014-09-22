@@ -96,6 +96,24 @@ sudo make install
 sudo ldconfig
 
 cd ${SOFTWARE_PATH}
+Wget 'http://download.savannah.gnu.org/releases/libunwind/libunwind-1.1.tar.gz'
+tar xzvf libunwind-1.1.tar.gz
+cd libunwind-1.1
+./configure --prefix=/usr/local/
+make -j 2
+sudo make install
+sudo ldconfig
+
+cd ${SOFTWARE_PATH}
+Wget 'https://gperftools.googlecode.com/files/gperftools-2.1.tar.gz'
+tar xzvf gperftools-2.1.tar.gz
+cd gperftools-2.1
+./configure --prefix=/usr/local/
+make -j 2
+sudo make install
+sudo ldconfig
+
+cd ${SOFTWARE_PATH}
 Wget 'http://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.gz'
 tar xzvf boost_1_56_0.tar.gz
 cd boost_1_56_0
