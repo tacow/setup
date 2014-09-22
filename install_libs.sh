@@ -13,6 +13,15 @@ sudo make install
 sudo ldconfig
 
 cd ${SOFTWARE_PATH}
+Wget 'ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.35.tar.gz'
+tar xzvf pcre-8.35.tar.gz
+cd pcre-8.35
+./configure --prefix=/usr/local/
+make -j 2
+sudo make install
+sudo ldconfig
+
+cd ${SOFTWARE_PATH}
 Wget 'http://www.openssl.org/source/openssl-1.0.1i.tar.gz'
 tar xzvf openssl-1.0.1i.tar.gz
 cd openssl-1.0.1i
