@@ -114,6 +114,15 @@ sudo make install
 sudo ldconfig
 
 cd ${SOFTWARE_PATH}
+Wget 'https://protobuf.googlecode.com/svn/rc/protobuf-2.6.0.tar.gz'
+tar xzvf protobuf-2.6.0.tar.gz
+cd protobuf-2.6.0
+./configure --prefix=/usr/local/
+make -j 2
+sudo make install
+sudo ldconfig
+
+cd ${SOFTWARE_PATH}
 Wget 'http://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.gz'
 tar xzvf boost_1_56_0.tar.gz
 cd boost_1_56_0
