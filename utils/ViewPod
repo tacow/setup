@@ -1,0 +1,14 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [filename]"
+    exit
+fi
+
+FILENAME=$1
+HTML_FILENAME="/tmp/${FILENAME}.html"
+
+pod2html ${FILENAME} > ${HTML_FILENAME}
+lynx ${HTML_FILENAME}
