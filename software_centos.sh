@@ -37,3 +37,4 @@ sudo yum install -y unix2dos
 sudo yum install -y dos2unix
 sudo yum install -y mtr
 sudo yum install -y net-tools
+sudo yum install -y traceroute
