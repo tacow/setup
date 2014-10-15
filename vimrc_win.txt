@@ -1,3 +1,6 @@
+Color Sampler Pack
+http://www.vim.org/scripts/script.php?script_id=625
+
 set nocompatible
 set backspace=indent,eol,start
 
@@ -15,5 +18,5 @@ set guifont=Lucida_Console:h16:cANSI
 set scrolloff=5
 set laststatus=2
 set statusline=\ File:\ %F%m%r%=Row:\ %l/%L,\ Col:\ %c
-colorscheme torte
+colorscheme pyte
 
