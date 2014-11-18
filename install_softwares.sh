@@ -47,6 +47,14 @@ make -j 2
 sudo make install
 
 cd ${SOFTWARE_PATH}
+Wget 'http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.21.tar.gz'
+tar xzvf mysql-5.6.21.tar.gz
+cd mysql-5.6.21
+cmake .
+make -j 2
+sudo make install
+
+cd ${SOFTWARE_PATH}
 Wget 'http://downloads.sourceforge.net/project/aria2/stable/aria2-1.18.8/aria2-1.18.8.tar.gz'
 tar xzvf aria2-1.18.8.tar.gz
 cd aria2-1.18.8
