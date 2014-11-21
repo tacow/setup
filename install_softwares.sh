@@ -34,7 +34,7 @@ cd ${SOFTWARE_PATH}
 Wget 'http://gcc.petsads.us/releases/gcc-4.9.2/gcc-4.9.2.tar.gz'
 tar xzvf gcc-4.9.2.tar.gz
 cd gcc-4.9.2
-./configure --prefix=/usr/local/
+./configure --prefix=/usr/local/gcc/
 make -j 2
 sudo make install
 
