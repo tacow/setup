@@ -132,6 +132,15 @@ sudo make install
 sudo ldconfig
 
 cd ${SOFTWARE_PATH}
+Wget 'http://downloads.sourceforge.net/project/jsoncpp/jsoncpp/0.5.0/jsoncpp-src-0.5.0.tar.gz'
+tar xzvf jsoncpp-src-0.5.0.tar.gz
+cd jsoncpp-src-0.5.0
+scons platform=linux-gcc
+sudo cp -r include/json/ /usr/local/include/
+sudo cp libs/linux-gcc-4.4.7/* /usr/local/lib/
+sudo ldconfig
+
+cd ${SOFTWARE_PATH}
 Wget 'http://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.gz'
 tar xzvf boost_1_56_0.tar.gz
 cd boost_1_56_0
