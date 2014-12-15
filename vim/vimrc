@@ -91,14 +91,14 @@ nnoremap <f11> :sp
 inoremap <f12> <esc>:vsp 
 nnoremap <f12> :vsp 
 
-inoremap <c-j> <esc><c-w>j
+inoremap <c-j> <esc><c-w>ja
 nnoremap <c-j> <c-w>j
 
-inoremap <c-k> <esc><c-w>k
+inoremap <c-k> <esc><c-w>ka
 nnoremap <c-k> <c-w>k
 
-inoremap <c-h> <esc><c-w>h
+inoremap <c-h> <esc><c-w>ha
 nnoremap <c-h> <c-w>h
 
-inoremap <c-l> <esc><c-w>l
+inoremap <c-l> <esc><c-w>la
 nnoremap <c-l> <c-w>l
