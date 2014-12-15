@@ -91,3 +91,14 @@ nnoremap <f11> :sp
 inoremap <f12> <esc>:vsp 
 nnoremap <f12> :vsp 
 
+inoremap <c-j> <esc><c-w>j
+nnoremap <c-j> <c-w>j
+
+inoremap <c-k> <esc><c-w>k
+nnoremap <c-k> <c-w>k
+
+inoremap <c-h> <esc><c-w>h
+nnoremap <c-h> <c-w>h
+
+inoremap <c-l> <esc><c-w>l
+nnoremap <c-l> <c-w>l
