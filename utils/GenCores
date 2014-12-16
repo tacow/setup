@@ -1,0 +1,15 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [pid]"
+    exit
+fi
+PID=$1 
+
+for i in {1..10}
+do
+    gcore -o core.${i} ${PID}
+    sleep 1
+done
