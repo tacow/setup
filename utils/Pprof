@@ -1,0 +1,20 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 3 ]
+then
+    echo "${CMD_NAME} [pdf report file] [exe file] [profile] (base profile)"
+    exit
+fi
+
+PDF_FILE=$1
+EXE_FILE=$2
+PROFILE=$3
+
+if [ $# -gt 3 ]
+then
+    BASE_PROFILE=$4
+    pprof --pdf --lines --base=${BASE_PROFILE} ${EXE_FILE} ${PROFILE} > ${PDF_FILE}
+else
+    pprof --pdf --lines ${EXE_FILE} ${PROFILE} > ${PDF_FILE}
+fi 

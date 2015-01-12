@@ -1,0 +1,12 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [command]"
+    exit
+fi
+
+COMMAND=$*
+
+LD_PRELOAD="libtcmalloc.so" HEAPPROFILE=profile ${COMMAND}
