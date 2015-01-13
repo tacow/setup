@@ -13,9 +13,9 @@ sudo make install
 sudo ldconfig
 
 cd ${SOFTWARE_PATH}
-Wget 'ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.35.tar.gz'
-tar xzvf pcre-8.35.tar.gz
-cd pcre-8.35
+Wget 'http://downloads.sourceforge.net/project/pcre/pcre/8.36/pcre-8.36.tar.gz'
+tar xzvf pcre-8.36.tar.gz
+cd pcre-8.36
 ./configure --prefix=/usr/local/
 make -j 2
 sudo make install
