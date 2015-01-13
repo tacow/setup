@@ -1,0 +1,18 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [open/close]"
+    exit
+fi
+
+if [ $1 = "open" ]
+then
+    sudo eject
+fi
+
+if [ $1 = "close" ]
+then
+    sudo eject -t
+fi
