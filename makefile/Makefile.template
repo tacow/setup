@@ -91,7 +91,7 @@ release: subdirbuildrelease touchrebuildfiles prebuildrelease ${DESTINATION_RELE
 	${AFTER_BUILD_RELEASE}
 	@echo
 
-${DESTINATION_RELEASE}: ${OBJECTS_RELEASE} Makefile
+${DESTINATION_RELEASE}: ${OBJECTS_RELEASE} ${MODULES_RELEASE2} Makefile
 	@echo
 	@echo "Linking RELEASE..."
 	@echo
@@ -100,6 +100,9 @@ ifeq (${DESTINATION_TYPE}, EXECUTABLE)
 endif
 ifeq (${DESTINATION_TYPE}, ARCHIVE)
 	ar rcs ${DESTINATION_RELEASE} ${addprefix ${OBJECT_PATH_RELEASE}/,${OBJECTS_RELEASE}}
+endif
+ifeq (${DESTINATION_TYPE}, MERGE_ARCHIVE)
+	@sh -c "MakeArScript() { echo \"CREATE \$$1\"; shift; for LIB in \$$*; do echo \"ADDLIB \$${LIB}\"; done; echo \"SAVE\"; echo \"END\"; }; MakeArScript ${DESTINATION_RELEASE} ${MODULES_RELEASE2} | ar -M"
 endif
 ifeq (${DESTINATION_TYPE}, SHARED_OBJECT)
 	${LINKER_PROGRAM} ${LDFLAGS} ${PLATFORM_FLAG} -shared ${SONAME_FLAG_RELEASE} -o ${DESTINATION_RELEASE} ${addprefix ${OBJECT_PATH_RELEASE}/,${OBJECTS_RELEASE}} ${MODULES_RELEASE2} ${LIBRARY_DIRS_FLAG} ${LIBRARYS_FLAG} ${PTHREAD_LIB}
@@ -110,7 +113,7 @@ debug: subdirbuilddebug touchrebuildfiles prebuilddebug ${DESTINATION_DEBUG}
 	${AFTER_BUILD_DEBUG}
 	@echo
 
-${DESTINATION_DEBUG}: ${OBJECTS_DEBUG} Makefile
+${DESTINATION_DEBUG}: ${OBJECTS_DEBUG} ${MODULES_DEBUG2} Makefile
 	@echo
 	@echo "Linking DEBUG..."
 	@echo
@@ -119,6 +122,9 @@ ifeq (${DESTINATION_TYPE}, EXECUTABLE)
 endif
 ifeq (${DESTINATION_TYPE}, ARCHIVE)
 	ar rcs ${DESTINATION_DEBUG} ${addprefix ${OBJECT_PATH_DEBUG}/,${OBJECTS_DEBUG}}
+endif
+ifeq (${DESTINATION_TYPE}, MERGE_ARCHIVE)
+	@sh -c "MakeArScript() { echo \"CREATE \$$1\"; shift; for LIB in \$$*; do echo \"ADDLIB \$${LIB}\"; done; echo \"SAVE\"; echo \"END\"; }; MakeArScript ${DESTINATION_DEBUG} ${MODULES_DEBUG2} | ar -M"
 endif
 ifeq (${DESTINATION_TYPE}, SHARED_OBJECT)
 	${LINKER_PROGRAM} ${LDFLAGS} ${PLATFORM_FLAG} -shared ${SONAME_FLAG_DEBUG} -o ${DESTINATION_DEBUG} ${addprefix ${OBJECT_PATH_DEBUG}/,${OBJECTS_DEBUG}} ${MODULES_DEBUG2} ${LIBRARY_DIRS_FLAG} ${LIBRARYS_FLAG} ${PTHREAD_LIB}

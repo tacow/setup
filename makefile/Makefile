@@ -36,7 +36,7 @@ AFTER_BUILD_DEBUG =
 USE_PTHREAD = TRUE
 # 目标代码平台，32位程序设为32，64位程序设为64，对应gcc的-m选项
 DESTINATION_PLATFORM = 
-# 目标代码类型，可执行程序设为EXECUTABLE，静态库设为ARCHIVE，动态库设为SHARED_OBJECT
+# 目标代码类型，可执行程序设为EXECUTABLE，静态库设为ARCHIVE，合并静态库设为MERGE_ARCHIVE，动态库设为SHARED_OBJECT
 DESTINATION_TYPE = EXECUTABLE
 # 如果目标代码为动态库，设置soname（Release版），如xxx.so.1
 SONAME_RELEASE = 
