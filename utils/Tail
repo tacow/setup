@@ -1,0 +1,11 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [filename]"
+    exit
+fi
+
+FILENAME=$1
+tail -n 0 -F ${FILENAME} 2> /dev/null
