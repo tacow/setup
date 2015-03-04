@@ -39,3 +39,4 @@ sudo yum install -y mtr
 sudo yum install -y net-tools
 sudo yum install -y traceroute
 sudo yum install -y scons
+sudo yum install -y wodim
