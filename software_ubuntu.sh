@@ -22,6 +22,3 @@ sudo apt-get install -y vim
 sudo apt-get install -y openssh-server
 sudo apt-get install -y apache2-utils
 sudo apt-get install -y graphviz
-
-sudo apt-get install -y libboost-all-dev
-sudo apt-get install -y libxerces-c-dev
