@@ -27,6 +27,8 @@ MODULES_DEBUG =
 DESTINATION_RELEASE = 
 # 目标文件名（Debug版）
 DESTINATION_DEBUG = 
+# 开始编译之前执行的命令
+BEFORE_BUILD = 
 # 编译Release版后执行的命令
 AFTER_BUILD_RELEASE = 
 # 编译Debug版后执行的命令

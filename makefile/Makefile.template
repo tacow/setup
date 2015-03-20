@@ -85,7 +85,13 @@ endif
 %_debug.cpp.o: %.cpp ${HEADERS} Makefile
 	g++ -Wall -g ${PIC_FLAG} ${CFLAGS} ${INCLUDE_DIRS_FLAG} ${PTHREAD_FLAG} ${PLATFORM_FLAG} ${DEFINITIONS_FLAG} -c -o ${OBJECT_PATH_DEBUG}/$@ $<
 
-all: release debug
+all: beforebuild release debug
+
+beforebuild:
+	@echo "Before build..."
+	@echo
+	${BEFORE_BUILD}
+	@echo
 
 release: subdirbuildrelease touchrebuildfiles prebuildrelease ${DESTINATION_RELEASE}
 	${AFTER_BUILD_RELEASE}
@@ -177,5 +183,5 @@ prebuilddebug:
 	@echo
 	@mkdir -p ${OBJECT_PATH_DEBUG}
 
-.PHONY: all clean veryclean subdirbuildrelease prebuildrelease subdirbuilddebug prebuilddebug
+.PHONY: all beforebuild release debug clean veryclean subdirbuildrelease prebuildrelease subdirbuilddebug prebuilddebug
 
