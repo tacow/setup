@@ -36,7 +36,7 @@ tar xzvf libevent-2.0.21-stable.tar.gz
 cd libevent-2.0.21-stable
 mkdir build
 cd build
-../configure --prefix=/usr/local/
+../configure --prefix=/usr/local/ --disable-openssl
 make -j 2
 sudo make install
 sudo ldconfig
@@ -70,7 +70,7 @@ tar xzvf curl-7.37.1.tar.gz
 cd curl-7.37.1
 mkdir build
 cd build
-../configure --prefix=/usr/local/ --without-libidn
+../configure --prefix=/usr/local/ --without-ssl --without-libidn --without-zlib
 make -j 2
 sudo make install
 sudo ldconfig
