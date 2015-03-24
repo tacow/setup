@@ -41,4 +41,4 @@ sudo yum install -y traceroute
 sudo yum install -y scons
 sudo yum install -y wodim
 sudo yum install -y eject
-sudo yum install -y eclipse-cdt
+#sudo yum install -y eclipse-cdt
