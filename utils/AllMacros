@@ -1,0 +1,11 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    HEADER_FILE=/dev/null
+else
+    HEADER_FILE=$1
+fi
+
+cpp -dM ${HEADER_FILE}
