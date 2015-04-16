@@ -19,6 +19,7 @@ export PS4='+ '
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;31'
 export HISTTIMEFORMAT='%F %T  '
+export DISPLAY=:0.0
 alias ls='ls -F --color=tty'
 alias ll='ls -lF --color=tty'
 alias lh='ls -lhF --color=tty'
