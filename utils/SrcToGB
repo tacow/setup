@@ -1,0 +1,9 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ "$1" = "-r" -o "$1" = "-R" ]
+then
+    find . \( -name "*.h" -or -name "*.c" -or -name "*.cpp" \) -exec Iconv UTF-8 GB18030 {} \;
+else
+    find . -maxdepth 1 \( -name "*.h" -or -name "*.c" -or -name "*.cpp" \) -exec Iconv UTF-8 GB18030 {} \;
+fi

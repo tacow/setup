@@ -14,7 +14,11 @@ shift
 
 for FILE in $@
 do
+    echo "Converting ${FILE}..."
     iconv -f ${FCHARSET} -t ${TCHARSET} ${FILE} > /tmp/iconv.tmp
-    cp /tmp/iconv.tmp ${FILE}
+    if [ $? -eq 0 ]
+    then
+        mv /tmp/iconv.tmp ${FILE}
+    fi
 done
 
