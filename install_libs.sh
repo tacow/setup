@@ -76,9 +76,9 @@ sudo make install
 sudo ldconfig
 
 cd ${SOFTWARE_PATH}
-Wget 'http://mirrors.hust.edu.cn/apache//xerces/c/3/sources/xerces-c-3.1.1.tar.gz'
-tar xzvf xerces-c-3.1.1.tar.gz
-cd xerces-c-3.1.1
+Wget 'http://mirrors.hust.edu.cn/apache//xerces/c/3/sources/xerces-c-3.1.2.tar.gz'
+tar xzvf xerces-c-3.1.2.tar.gz
+cd xerces-c-3.1.2
 mkdir build
 cd build
 ../configure --prefix=/usr/local/ --disable-network
@@ -114,7 +114,7 @@ sudo make install
 sudo ldconfig
 
 cd ${SOFTWARE_PATH}
-Wget 'https://gperftools.googlecode.com/files/gperftools-2.1.tar.gz'
+Wget 'http://downloads.sourceforge.net/project/gperftools.mirror/gperftools-2.1.tar.gz'
 tar xzvf gperftools-2.1.tar.gz
 cd gperftools-2.1
 ./configure --prefix=/usr/local/
@@ -123,7 +123,7 @@ sudo make install
 sudo ldconfig
 
 cd ${SOFTWARE_PATH}
-Wget 'https://protobuf.googlecode.com/svn/rc/protobuf-2.6.0.tar.gz'
+Wget 'http://downloads.sourceforge.net/project/protobuf/protobuf-2.6.0.tar.gz'
 tar xzvf protobuf-2.6.0.tar.gz
 cd protobuf-2.6.0
 ./configure --prefix=/usr/local/
@@ -141,9 +141,9 @@ sudo cp libs/linux-gcc-4.4.7/* /usr/local/lib/
 sudo ldconfig
 
 cd ${SOFTWARE_PATH}
-Wget 'http://downloads.sourceforge.net/project/boost/boost/1.56.0/boost_1_56_0.tar.gz'
-tar xzvf boost_1_56_0.tar.gz
-cd boost_1_56_0
+Wget 'http://downloads.sourceforge.net/project/boost/boost/1.58.0/boost_1_58_0.tar.gz'
+tar xzvf boost_1_58_0.tar.gz
+cd boost_1_58_0
 ./bootstrap.sh --prefix=/usr/local
 ./b2
 sudo ./b2 install
