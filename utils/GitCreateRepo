@@ -1,0 +1,14 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [repository name]"
+    exit
+fi
+REPO_NAME=$1
+
+GIT_USER=git
+
+sudo su ${GIT_USER} -c "cd ~; git init --bare ${REPO_NAME}.git"
+git clone ${GIT_USER}@localhost:${REPO_NAME}.git
