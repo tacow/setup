@@ -1,0 +1,12 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 2 ]
+then
+    echo "${CMD_NAME} [section] [name]"
+    exit
+fi
+NAME=$2
+SECTION=$1
+
+gunzip -c "/usr/share/man/man${SECTION}/${NAME}.${SECTION}.gz" | groff -Thtml -mandoc > "${NAME}.${SECTION}.html"
