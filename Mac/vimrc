@@ -1,0 +1,61 @@
+set nocompatible
+set backspace=indent,eol,start
+
+syntax on
+filetype plugin on
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set number
+set ignorecase
+set nobackup
+set nowritebackup
+set scrolloff=5
+set laststatus=2
+set statusline=\ File:\ %F%m%r%=Row:\ %l/%L(%p%%),\ Col:\ %c
+set hlsearch
+set autochdir
+set hidden
+set completeopt=menu
+
+command Ls !ls -l
+command Pwd !pwd
+command Mk !make
+command Mk8 !make -j 8
+command Mkf !make %.o
+command Mc !make clean
+command Mvc !make veryclean
+command Sw w !sudo tee % > /dev/null
+
+function InsertTabWrapper()
+      let col = col('.') - 1 
+      if !col || getline('.')[col - 1] !~ '\k'
+          return "\<tab>"
+      else
+          return "\<c-n>"
+      endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+
+inoremap <f2> <esc>:tabe .<cr>
+nnoremap <f2> :tabe .<cr>
+
+inoremap <f3> <esc>:AT<cr>a
+nnoremap <f3> :AT<cr>
+
+inoremap <f5> <esc>gg=G<c-o><c-o>a
+nnoremap <f5> gg=G<c-o><c-o>
+
+inoremap <f6> <esc>:shell<cr>a
+nnoremap <f6> :shell<cr>
+
+inoremap <f7> <esc>gTa
+nnoremap <f7> gT
+
+inoremap <f8> <esc>gta
+nnoremap <f8> gt
+
+inoremap <f9> <esc>:tabe 
+nnoremap <f9> :tabe 
