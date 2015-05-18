@@ -19,3 +19,9 @@ cmake .
 make -j 2
 sudo make install
 
+cd ${SOFTWARE_PATH}
+Wget 'https://pypi.python.org/packages/source/P/PyInstaller/PyInstaller-2.1.tar.gz'
+tar xzvf PyInstaller-2.1.tar.gz
+cd PyInstaller-2.1
+python setup.py build
+sudo python setup.py install
