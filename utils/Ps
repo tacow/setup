@@ -1,0 +1,8 @@
+#!/bin/sh
+if [ $# -lt 1 ]
+then
+    ps -eo user,pid,ppid,stime,cmd
+else
+    PATTERN=$1
+    ps -eo user,pid,ppid,stime,cmd | grep ${PATTERN}
+fi
