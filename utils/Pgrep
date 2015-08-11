@@ -1,0 +1,10 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [pattern]"
+    exit
+fi
+
+ps -eo pid,cmd | grep "$1" | grep -v grep | awk '{ print $1 }'
