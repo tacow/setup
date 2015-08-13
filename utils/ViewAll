@@ -1,0 +1,10 @@
+#!/bin/sh
+
+for FILE in *
+do
+    echo "========================================"
+    echo "* ${FILE}:"
+    echo
+    cat ${FILE}
+    echo
+done
