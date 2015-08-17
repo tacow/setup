@@ -1,10 +1,20 @@
 #!/bin/sh
 
-for FILE in *
+if [ $# -lt 1 ]
+then
+    FILES=*
+else
+    FILES=$*
+fi
+
+for FILE in ${FILES}
 do
-    echo "========================================"
-    echo "* ${FILE}:"
-    echo
-    cat ${FILE}
-    echo
+    if [ -f ${FILE} -a -r ${FILE} ]
+    then
+        echo "========================================"
+        echo "* ${FILE}:"
+        echo
+        cat ${FILE}
+        echo
+    fi
 done
