@@ -51,6 +51,7 @@ alias Tg='ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .'
 alias Stg='ctags -R --c++-kinds=+p --fields=+iaS --extra=+q --exclude=boost -f ~/.systags /usr/include/'
 alias Gb='export LANG=zh_CN.gb18030 LANGUAGE=zh_CN.gb18030 LC_ALL=zh_CN.gb18030'
 alias Utf8='export LANG=zh_CN.utf8 LANGUAGE=zh_CN.utf8 LC_ALL=zh_CN.utf8'
+alias vi='vim -p'
 alias vim='vim -p'
 alias Diff='diff -y -W 100'
 #My script end
