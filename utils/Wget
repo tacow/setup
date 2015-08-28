@@ -10,7 +10,7 @@ fi
 URL=$1
 while true
 do
-    if wget -c --timeout=60 "${URL}"
+    if wget -c --timeout=10 "${URL}"
     then
         break
     fi
