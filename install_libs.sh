@@ -76,7 +76,7 @@ sudo make install
 sudo ldconfig
 
 cd ${SOFTWARE_PATH}
-Wget 'http://mirrors.hust.edu.cn/apache//xerces/c/3/sources/xerces-c-3.1.2.tar.gz'
+Wget 'http://mirror.bit.edu.cn/apache//xerces/c/3/sources/xerces-c-3.1.2.tar.gz'
 tar xzvf xerces-c-3.1.2.tar.gz
 cd xerces-c-3.1.2
 mkdir build
