@@ -12,14 +12,6 @@ make -j 2
 sudo make install
 
 cd ${SOFTWARE_PATH}
-Wget 'http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.21.tar.gz'
-tar xzvf mysql-5.6.21.tar.gz
-cd mysql-5.6.21
-cmake .
-make -j 2
-sudo make install
-
-cd ${SOFTWARE_PATH}
 Wget 'https://pypi.python.org/packages/source/P/PyInstaller/PyInstaller-2.1.tar.gz'
 tar xzvf PyInstaller-2.1.tar.gz
 cd PyInstaller-2.1
