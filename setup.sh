@@ -39,7 +39,7 @@ then
 
     if [ $osType -eq 2 ]
     then
-        #sh ${SCRIPT_DIR}/software_ubuntu.sh
+        sh ${SCRIPT_DIR}/software_ubuntu.sh
     fi
 fi
 
