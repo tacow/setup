@@ -1,5 +1,7 @@
 #!/bin/sh
 
+sudo passwd
+
 # Setup sudoers
 MY_NAME=$(whoami)
 cat >> /tmp/sudoers.append << EOF
