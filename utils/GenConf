@@ -1,0 +1,24 @@
+#!/bin/sh
+
+source ./Config.sh
+
+autoscan
+mv configure.scan configure.in
+sed -i "s/^AC_INIT.*$/AC_INIT([${PROG_NAME}], [${VERSION}])\nAM_INIT_AUTOMAKE([${PROG_NAME}], [${VERSION}])/" configure.in
+grep AC_CONFIG_FILES configure.in > /dev/null
+if [ $? -ne 0 ]
+then
+    sed -i "s/^AC_OUTPUT$/AC_CONFIG_FILES([Makefile])\nAC_OUTPUT/" configure.in
+fi
+
+autoheader
+aclocal
+autoconf
+
+SOURCE_FILES=`find . \( -name "*.h" -or -name "*.hpp" -or -name "*.c" -or -name "*.cpp" \) | xargs`
+> Makefile.am
+echo "bin_PROGRAMS = ${PROG_NAME}" >> Makefile.am
+echo "${PROG_NAME}_SOURCES = ${SOURCE_FILES}" >> Makefile.am
+echo "LIBS = ${LIBS}" >> Makefile.am
+touch NEWS README AUTHORS ChangeLog
+automake --add-missing
