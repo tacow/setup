@@ -2,7 +2,7 @@
 
 if [ ! -f ./Config.sh ]
 then
-    echo "PROG_NAME=\"\"" >> ./Config.sh
+    echo "LIB_NAME=\"\"" >> ./Config.sh
     echo "VERSION=\"\"" >> ./Config.sh
     echo "DEFS=\"\"" >> ./Config.sh
     echo "INCLUDES=\"\"" >> ./Config.sh
@@ -16,7 +16,7 @@ source ./Config.sh
 
 autoscan
 mv configure.scan configure.in
-sed -i "s/^AC_INIT.*$/AC_INIT([${PROG_NAME}], [${VERSION}])\nAM_INIT_AUTOMAKE([${PROG_NAME}], [${VERSION}])/" configure.in
+sed -i "s/^AC_INIT.*$/AC_INIT([${LIB_NAME}], [${VERSION}])\nAM_INIT_AUTOMAKE([${LIB_NAME}], [${VERSION}])\nAC_PROG_LIBTOOL\nAC_PROG_RANLIB/" configure.in
 sed -i "s/^AC_CONFIG_FILES.*$//" configure.in
 sed -i "s/^AC_OUTPUT$/AC_CONFIG_FILES([Makefile])\nAC_OUTPUT/" configure.in
 
@@ -26,8 +26,8 @@ autoconf
 
 SOURCES=`find . \( -name "*.h" -or -name "*.hpp" -or -name "*.c" -or -name "*.cpp" \) | xargs`
 rm -f Makefile.am
-echo "bin_PROGRAMS = ${PROG_NAME}" >> Makefile.am
-echo "${PROG_NAME}_SOURCES = ${SOURCES}" >> Makefile.am
+echo "lib_LTLIBRARIES = ${LIB_NAME}.la" >> Makefile.am
+echo "${LIB_NAME}_la_SOURCES = ${SOURCES}" >> Makefile.am
 if [ -n "${DEFS}" ]
 then
     echo "DEFS += ${DEFS}" >> Makefile.am
@@ -41,4 +41,5 @@ then
     echo "LIBS = ${LIBS}" >> Makefile.am
 fi
 touch NEWS README AUTHORS ChangeLog
+libtoolize
 automake --add-missing
