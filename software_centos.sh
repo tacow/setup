@@ -11,6 +11,7 @@ sudo yum install -y make
 sudo yum install -y autoconf
 sudo yum install -y automake
 sudo yum install -y libtool
+sudo yum install -y rpm-build
 sudo yum install -y gcc-c++
 sudo yum install -y gdb
 sudo yum install -y valgrind
