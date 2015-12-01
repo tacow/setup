@@ -20,7 +20,8 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;31'
 export HISTTIMEFORMAT='%F %T  '
 export DISPLAY=:0.0
-export MANPATH=/usr/share/man:/usr/local/share/man
+export MANPATH=/usr/local/share/man:/usr/share/man
+export INFOPATH=/usr/local/share/info:/usr/share/info
 alias ls='ls -F --color=tty'
 alias ll='ls -lF --color=tty'
 alias lh='ls -lhF --color=tty'
