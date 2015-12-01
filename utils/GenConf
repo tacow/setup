@@ -16,7 +16,7 @@ source ./Config.sh
 
 autoscan
 mv configure.scan configure.in
-sed -i "s/^AC_INIT.*$/AC_INIT([${PROG_NAME}], [${VERSION}])\nAM_INIT_AUTOMAKE([${PROG_NAME}], [${VERSION}])/" configure.in
+sed -i "s/^AC_INIT.*$/AC_INIT([${PROG_NAME}], [${VERSION}])\nAM_INIT_AUTOMAKE/" configure.in
 sed -i "s/^AC_CONFIG_FILES.*$//" configure.in
 sed -i "s/^AC_OUTPUT$/AC_CONFIG_FILES([Makefile])\nAC_OUTPUT/" configure.in
 

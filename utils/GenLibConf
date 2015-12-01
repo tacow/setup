@@ -16,7 +16,7 @@ source ./Config.sh
 
 autoscan
 mv configure.scan configure.in
-sed -i "s/^AC_INIT.*$/AC_INIT([${LIB_NAME}], [${VERSION}])\nAM_INIT_AUTOMAKE([${LIB_NAME}], [${VERSION}])\nAC_PROG_LIBTOOL\nAC_PROG_RANLIB/" configure.in
+sed -i "s/^AC_INIT.*$/AC_INIT([${LIB_NAME}], [${VERSION}])\nAM_INIT_AUTOMAKE\nAC_PROG_LIBTOOL\nAC_PROG_RANLIB/" configure.in
 sed -i "s/^AC_CONFIG_FILES.*$//" configure.in
 sed -i "s/^AC_OUTPUT$/AC_CONFIG_FILES([Makefile])\nAC_OUTPUT/" configure.in
 
