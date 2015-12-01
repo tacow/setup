@@ -1,0 +1,8 @@
+#!/bin/sh
+
+mkdir -p ~/rpmbuild/SPECS
+mkdir -p ~/rpmbuild/BUILDROOT
+mkdir -p ~/rpmbuild/SRPMS
+mkdir -p ~/rpmbuild/SOURCES
+mkdir -p ~/rpmbuild/RPMS
+mkdir -p ~/rpmbuild/BUILD
