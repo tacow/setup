@@ -22,6 +22,7 @@ Version:        %{version}
 Release:        %{release}
 Source:         %{name}-%{version}.tar.gz
 Group:          System Environment/Daemons
+AutoReqProv:    no
 
 %description
 
