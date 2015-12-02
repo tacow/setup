@@ -1,0 +1,46 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [spec file]"
+    exit
+fi
+SPEC_FILE=$1
+
+if [ ! -f ${SPEC_FILE} ]
+then
+    cat > ${SPEC_FILE} << EOF
+%define name        
+%define release     1
+%define version     1.0.0
+
+Summary:        
+License:        GPL
+Name:           %{name}
+Version:        %{version}
+Release:        %{release}
+Source:         %{name}-%{version}.tar.gz
+Group:          System Environment/Daemons
+
+%description
+
+%prep
+%setup -q
+
+%build
+./configure --prefix=/usr/local
+make
+
+%install
+make install DESTDIR=\${RPM_BUILD_ROOT}
+
+%files
+%defattr(-,root,root)
+/usr/local/bin
+%config /usr/local/etc
+%doc /usr/local/share
+EOF
+else
+    rpmbuild -v -bb --clean ${SPEC_FILE}
+fi
