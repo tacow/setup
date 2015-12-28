@@ -21,25 +21,16 @@ make -j 2
 sudo make install
 sudo ldconfig
 
-cd ${SOFTWARE_PATH}
-Wget 'http://www.openssl.org/source/openssl-1.0.1i.tar.gz'
-tar xzvf openssl-1.0.1i.tar.gz
-cd openssl-1.0.1i
-./config --prefix=/usr/local/ shared
-make -j 2
-sudo make install
-sudo ldconfig
-
-cd ${SOFTWARE_PATH}
-Wget 'http://downloads.sourceforge.net/project/levent/libevent/libevent-2.0/libevent-2.0.21-stable.tar.gz'
-tar xzvf libevent-2.0.21-stable.tar.gz
-cd libevent-2.0.21-stable
-mkdir build
-cd build
-../configure --prefix=/usr/local/ --disable-openssl
-make -j 2
-sudo make install
-sudo ldconfig
+#cd ${SOFTWARE_PATH}
+#Wget 'http://downloads.sourceforge.net/project/levent/libevent/libevent-2.0/libevent-2.0.21-stable.tar.gz'
+#tar xzvf libevent-2.0.21-stable.tar.gz
+#cd libevent-2.0.21-stable
+#mkdir build
+#cd build
+#../configure --prefix=/usr/local/ --disable-openssl
+#make -j 2
+#sudo make install
+#sudo ldconfig
 
 cd ${SOFTWARE_PATH}
 Wget 'http://www.fastcgi.com/dist/fcgi.tar.gz'
@@ -138,13 +129,4 @@ cd jsoncpp-src-0.5.0
 scons platform=linux-gcc
 sudo cp -r include/json/ /usr/local/include/
 sudo cp libs/linux-gcc-4.4.7/* /usr/local/lib/
-sudo ldconfig
-
-cd ${SOFTWARE_PATH}
-Wget 'http://downloads.sourceforge.net/project/boost/boost/1.58.0/boost_1_58_0.tar.gz'
-tar xzvf boost_1_58_0.tar.gz
-cd boost_1_58_0
-./bootstrap.sh --prefix=/usr/local
-./b2
-sudo ./b2 install
 sudo ldconfig
