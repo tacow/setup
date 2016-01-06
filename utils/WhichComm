@@ -1,0 +1,31 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [command name]"
+    exit
+fi
+
+COMM_FILE=`which $1`
+if [ $? -ne 0 ]
+then
+    exit
+fi
+
+echo "Command file: ${COMM_FILE}"
+echo
+
+COMM_PACKAGE=`rpm -qf ${COMM_FILE}`
+echo "Command package: ${COMM_PACKAGE}"
+echo
+
+rpm -qi ${COMM_PACKAGE}
+echo
+
+echo -n "View package files [y/N] "
+read YN
+if [ "${YN}" = "y" ]
+then
+    rpm -ql ${COMM_PACKAGE} | less
+fi
