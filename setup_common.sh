@@ -13,7 +13,7 @@ cat >> ~/.bashrc << EOF
 #export LANGUAGE=zh_CN.gb18030
 #export LC_ALL=zh_CN.gb18030
 export PATH=\${PATH}:/usr/local/sbin:/usr/sbin:/sbin:${SCRIPT_PATH}/utils
-export PS1='[\u@\h \W]\$ '
+export PS1='[\u@\h \w]\$ '
 export PS2='> '
 export PS4='+ '
 export GREP_OPTIONS='--color=auto'
