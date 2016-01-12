@@ -15,7 +15,7 @@ set nowritebackup
 set guifont=Lucida_Console:h12:cANSI
 set scrolloff=5
 set laststatus=2
-set statusline=\ File:\ %F%m%r%=Row:\ %l/%L(%p%%),\ Col:\ %c
+set statusline=\ File:\ %F%m%r%=Format:\ %{&fileformat},\ Row:\ %l/%L(%p%%),\ Col:\ %c
 set hlsearch
 set autochdir
 set hidden
