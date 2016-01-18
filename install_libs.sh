@@ -78,6 +78,14 @@ sudo make install
 sudo ldconfig
 
 cd ${SOFTWARE_PATH}
+Wget 'http://mitab.maptools.org/dl/mitab-1.7.0.tar.gz'
+tar xzvf mitab-1.7.0.tar.gz
+cd mitab-1.7.0
+make
+sudo cp mitab/tab2tab /usr/local/bin/
+sudo cp mitab/tabdump /usr/local/bin/
+
+cd ${SOFTWARE_PATH}
 Wget 'http://www.cmake.org/files/v3.0/cmake-3.0.1.tar.gz'
 tar xzvf cmake-3.0.1.tar.gz
 cd cmake-3.0.1
