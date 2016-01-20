@@ -1,8 +1,8 @@
 #!/bin/sh
 if [ $# -lt 1 ]
 then
-    ps -eo user,pid,ppid,stime,cmd
+    ps -eo user,pid,ppid,%cpu,%mem,stime,etime,time,cmd
 else
     PATTERN=$1
-    ps -eo user,pid,ppid,stime,cmd | grep ${PATTERN}
+    ps -eo user,pid,ppid,%cpu,%mem,stime,etime,time,cmd | awk "{ if (NR == 1 || (\$0 ~ /${PATTERN}/ && \$0 !~ /Ps/ && \$0 !~ /awk/)) print \$0 }"
 fi
