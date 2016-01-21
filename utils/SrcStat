@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ "$1" = "-r" -o "$1" = "-R" ]
+then
+    FILES=`find . \( -name "*.h" -or -name "*.hpp" -or -name "*.c" -or -name "*.cpp" \) | sort`
+else
+    FILES=`find . -maxdepth 1 \( -name "*.h" -or -name "*.hpp" -or -name "*.c" -or -name "*.cpp" \) | sort`
+fi
+
+TOTAL_LINE_NUM=0
+for FILE in ${FILES}
+do
+    LINE_NUM=`cat ${FILE} | wc -l`
+    ((TOTAL_LINE_NUM = ${TOTAL_LINE_NUM} + ${LINE_NUM}))
+    printf "${LINE_NUM}\t${FILE}\n"
+done
+printf "${TOTAL_LINE_NUM}\tTotal\n"
