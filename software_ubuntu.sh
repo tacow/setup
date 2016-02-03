@@ -1,6 +1,6 @@
 #!/bin/sh
 sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get upgrade -y
 sudo apt-get install -y openssh-server
 sudo apt-get install -y git
 sudo apt-get install -y subversion
