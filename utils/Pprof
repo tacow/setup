@@ -14,7 +14,7 @@ PROFILE=$3
 if [ $# -gt 3 ]
 then
     BASE_PROFILE=$4
-    pprof --pdf --lines --base=${BASE_PROFILE} ${EXE_FILE} ${PROFILE} > ${PDF_FILE}
+    pprof --pdf --base=${BASE_PROFILE} ${EXE_FILE} ${PROFILE} > ${PDF_FILE}
 else
-    pprof --pdf --lines ${EXE_FILE} ${PROFILE} > ${PDF_FILE}
+    pprof --pdf ${EXE_FILE} ${PROFILE} > ${PDF_FILE}
 fi 
