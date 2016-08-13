@@ -7,6 +7,6 @@ git clone 'git://github.com/tacow/setup.git'
 git clone 'git://github.com/tacow/test.git'
 
 git config --global user.name yintao
-git config --global user.email taco@163.com
+git config --global user.email tacow@qq.com
 git config --global core.editor vim
 git config --global color.ui true
