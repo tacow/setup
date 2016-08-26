@@ -1,0 +1,29 @@
+#!/bin/bash
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [what] (extension) (where)"
+    exit
+fi
+
+WHAT=$1
+if [ $# -lt 2 ]
+then
+    EXT=
+else
+    EXT=$2
+fi
+if [ $# -lt 3 ]
+then
+    WHERE=.
+else
+    WHERE=$3
+fi
+
+if [ -z ${EXT} ]
+then
+    find ${WHERE} -type f \( -name "*.h" -or -name "*.hpp" -or -name "*.c" -or -name "*.cpp" -or -name "*.cc" \) -exec egrep -Hn "(typedef |#define |class |struct |union |enum ).*\<${WHAT}\>" {} \;
+else
+    find ${WHERE} -type f -name "*.${EXT}" -exec egrep -Hn "(typedef |#define |class |struct |union |enum ).*\<${WHAT}\>" {} \;
+fi
