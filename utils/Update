@@ -1,0 +1,22 @@
+#!/bin/sh
+isUbuntu() {
+    if [ -f /etc/issue ]
+    then
+        if grep -i ubuntu /etc/issue > /dev/null
+        then
+            return 0
+        else
+            return 1
+        fi
+    else
+        return -1
+    fi
+}
+
+if isUbuntu
+then
+    sudo apt update
+    sudo apt upgrade
+else
+    sudo yum update
+fi
