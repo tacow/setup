@@ -15,8 +15,8 @@ isUbuntu() {
 
 if isUbuntu
 then
-    sudo apt update
-    sudo apt upgrade
+    sudo apt update -y
+    sudo apt upgrade -y
 else
-    sudo yum update
+    sudo yum update -y
 fi
