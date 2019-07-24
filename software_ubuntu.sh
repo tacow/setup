@@ -6,6 +6,7 @@ sudo apt install -y git
 sudo apt install -y subversion
 sudo apt install -y lynx-cur
 sudo apt install -y make
+sudo apt install -y cmake
 sudo apt install -y gcc
 sudo apt install -y g++
 sudo apt install -y gdb
