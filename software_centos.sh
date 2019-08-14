@@ -15,6 +15,7 @@ sudo yum install -y rpm-build
 sudo yum install -y gcc-c++
 sudo yum install -y gdb
 sudo yum install -y cgdb
+sudo yum install -y pstack
 sudo yum install -y valgrind
 sudo yum install -y strace
 sudo yum install -y ltrace
