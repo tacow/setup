@@ -1,0 +1,30 @@
+set nocompatible
+set backspace=indent,eol,start
+
+syntax on
+filetype plugin on
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set number
+set ignorecase
+set nobackup
+set nowritebackup
+set scrolloff=5
+set laststatus=2
+set statusline=\ File:\ %F%m%r%=Format:\ %{&fileformat},\ Row:\ %l/%L(%p%%),\ Col:\ %c
+set hlsearch
+set autochdir
+set hidden
+set completeopt=menu
+
+inoremap <f7> <esc>gTa
+nnoremap <f7> gT
+
+inoremap <f8> <esc>gta
+nnoremap <f8> gt
+
+inoremap <f9> <esc>:tabe 
+nnoremap <f9> :tabe 
