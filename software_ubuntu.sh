@@ -27,3 +27,5 @@ sudo apt install -y openssh-server
 sudo apt install -y apache2-utils
 sudo apt install -y graphviz
 sudo apt install -y libstdc++-7-doc
+sudo apt install -y libssl-dev
+sudo apt install -y libssl-doc
