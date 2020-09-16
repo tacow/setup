@@ -1,6 +1,7 @@
 set pagination off
 set print pretty on
 set print elements 0
+set print repeats 32
 
 define asm
 display/10i $pc
