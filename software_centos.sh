@@ -51,5 +51,7 @@ sudo yum install -y python-setuptools
 sudo yum install -y epel-release
 sudo yum install -y inxi
 sudo yum install -y aria2
+sudo yum install -y libasan
+sudo yum install -y libtsan
 #sudo yum install -y eclipse-cdt
 sudo debuginfo-install -y glibc
