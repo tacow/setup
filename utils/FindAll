@@ -15,4 +15,4 @@ else
     WHERE=$2
 fi
 
-find ${WHERE} -type f -exec egrep -Hna "\<${WHAT}\>" {} \;
+find ${WHERE} -type f -exec egrep -Hna "${WHAT}" {} \;
