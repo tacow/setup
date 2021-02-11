@@ -1,0 +1,128 @@
+#!/usr/bin/python3
+import sys
+import os
+
+def FileLineCount(fileName):
+    res = os.popen("wc -l " + fileName)
+    lines = res.readlines()
+    if len(lines) > 0:
+        tokens = lines[0].split()
+        if len(tokens) > 0:
+            numStr = tokens[0]
+            if numStr.isdigit():
+                return int(numStr)
+            else:
+                return 0
+        else:
+            return 0
+    else:
+        return 0
+
+def DiffLineCount(sourceFile, targetFile):
+    diffCommand = "diff -wu \"" + sourceFile + "\" \"" + targetFile + "\" | egrep \"^\\+|^-\" | egrep -v \"\\+\\+\\+|^---\" | wc -l"
+    res = os.popen(diffCommand)
+    lines = res.readlines()
+    if len(lines) > 0:
+        tokens = lines[0].split()
+        if len(tokens) > 0:
+            numStr = tokens[0]
+            if numStr.isdigit():
+                return int(numStr)
+            else:
+                return 0
+        else:
+            return 0
+    else:
+        return 0
+
+
+# Make "find" command
+fileExtensions = ["h", "hpp", "c", "cpp", "cc"]
+fileExtensions.extend(["sql", "spc", "bdy"])
+fileFilters = []
+for fileExt in fileExtensions:
+    fileFilter = "-iname \"*." + fileExt + "\""
+    fileFilters.append(fileFilter)
+findCommand = "find . -type f \\( " + " -or ".join(fileFilters) + " \\)"
+
+if len(sys.argv) < 3:
+    print("Usage: %s [source dir] [target dir]" % sys.argv[0])
+    sys.exit()
+sourceDir = sys.argv[1]
+targetDir = sys.argv[2]
+
+cwd = os.getcwd()
+
+sourceFiles = []
+try:
+    os.chdir(sourceDir)
+    sourceDir = os.getcwd()
+    res = os.popen(findCommand)
+    for line in res:
+        sourceFiles.append(line.strip())
+    res.close()
+except OSError as e:
+    print("Failed to get source dir entries: %s" % e)
+    sys.exit()
+
+targetFiles = []
+try:
+    os.chdir(cwd)
+    os.chdir(targetDir)
+    targetDir = os.getcwd()
+    res = os.popen(findCommand)
+    for line in res:
+        targetFiles.append(line.strip())
+    res.close()
+except OSError as e:
+    print("Failed to get source dir entries: %s" % e)
+    sys.exit()
+
+sourceFileSet = set(sourceFiles)
+targetFileSet = set(targetFiles)
+
+newFiles = []
+commonFiles = []
+for targetFile in targetFiles:
+    if targetFile not in sourceFileSet:
+        newFiles.append(targetFile)
+    else:
+        commonFiles.append(targetFile)
+
+deletedFiles = []
+for sourceFile in sourceFiles:
+    if sourceFile not in targetFileSet:
+        deletedFiles.append(sourceFile)
+
+print("New files:")
+print("\"File name\" - \"File lines\"")
+os.chdir(targetDir)
+totalLineCount = 0
+for newFile in newFiles:
+    fileLineCount = FileLineCount(newFile)
+    totalLineCount += fileLineCount
+    print("%s - %d" % (newFile, fileLineCount))
+print("Total new lines: %d\n" % totalLineCount)
+
+print("Deleted files:")
+print("\"File name\" - \"File lines\"")
+os.chdir(sourceDir)
+totalLineCount = 0
+for deletedFile in deletedFiles:
+    fileLineCount = FileLineCount(deletedFile)
+    totalLineCount += fileLineCount
+    print("%s - %d" % (deletedFile, fileLineCount))
+print("Total deleted lines: %d\n" % totalLineCount)
+
+print("Different files:")
+print("\"File name\" - \"Diff lines\"")
+totalLineCount = 0
+for commonFile in commonFiles:
+    sourceFile = sourceDir + "/" + commonFile
+    targetFile = targetDir + "/" + commonFile
+    diffLineCount = DiffLineCount(sourceFile, targetFile)
+    totalLineCount += diffLineCount
+    if diffLineCount > 0:
+        print("%s - %d" % (commonFile, diffLineCount))
+print("Total different lines: %d\n" % totalLineCount)
+
