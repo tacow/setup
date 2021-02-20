@@ -1,128 +1,187 @@
 #!/usr/bin/python3
 import sys
 import os
+from getopt import getopt
 
 def FileLineCount(fileName):
-    res = os.popen("wc -l " + fileName)
+    res = os.popen("cat \"" + fileName + "\" | wc -l")
     lines = res.readlines()
     if len(lines) > 0:
-        tokens = lines[0].split()
-        if len(tokens) > 0:
-            numStr = tokens[0]
-            if numStr.isdigit():
-                return int(numStr)
-            else:
-                return 0
-        else:
-            return 0
+        numStr = lines[0].strip()
+        return int(numStr)
     else:
         return 0
 
 def DiffLineCount(sourceFile, targetFile):
-    diffCommand = "diff -wu \"" + sourceFile + "\" \"" + targetFile + "\" | egrep \"^\\+|^-\" | egrep -v \"\\+\\+\\+|^---\" | wc -l"
+    diffCommand = "diff -wu \"" + sourceFile + "\" \"" + targetFile + "\" | egrep -a \"^\\+|^-\" | egrep -av \"\\+\\+\\+|^---\" | wc -l"
     res = os.popen(diffCommand)
     lines = res.readlines()
     if len(lines) > 0:
-        tokens = lines[0].split()
-        if len(tokens) > 0:
-            numStr = tokens[0]
-            if numStr.isdigit():
-                return int(numStr)
-            else:
-                return 0
-        else:
-            return 0
+        numStr = lines[0].strip()
+        return int(numStr)
     else:
         return 0
 
+if __name__ == "__main__":
+    try:
+        opts, args = getopt(sys.argv[1:], "cjposxiae:", ["cpp", "java", "python", "oracle", "shell", "xml", "ini", "all", "exclude="])
+    except GetoptError as e:
+        print(e)
+        sys.exit()
 
-# Make "find" command
-fileExtensions = ["h", "hpp", "c", "cpp", "cc"]
-fileExtensions.extend(["sql", "spc", "bdy"])
-fileFilters = []
-for fileExt in fileExtensions:
-    fileFilter = "-iname \"*." + fileExt + "\""
-    fileFilters.append(fileFilter)
-findCommand = "find . -type f \\( " + " -or ".join(fileFilters) + " \\)"
+    if len(args) != 2:
+        print("Usage: %s [OPTIONS] [source dir] [target dir]" % sys.argv[0])
+        print("OPTIONS")
+        print("        -c  --cpp          Check C/C++ files, including *.h, *.hpp, *.c, *.cpp, *.cc [default]")
+        print("        -j  --java         Check JAVA files, including *.java")
+        print("        -p  --python       Check PYTHON files, including *.py")
+        print("        -o  --oracle       Check ORACLE files, including *.sql, *.spc, *.bdy")
+        print("        -s  --shell        Check SHELL files, including *.sh")
+        print("        -x  --xml          Check XML files, including *.xml")
+        print("        -i  --ini          Check INI files, including *.ini")
+        print("        -a  --all          Check ALL file types above")
+        print("        -e [name]          Exclude files or dirs")
+        print("        --exclude=[name]")
+        sys.exit()
 
-if len(sys.argv) < 3:
-    print("Usage: %s [source dir] [target dir]" % sys.argv[0])
-    sys.exit()
-sourceDir = sys.argv[1]
-targetDir = sys.argv[2]
+    sourceDir = args[0]
+    targetDir = args[1]
 
-cwd = os.getcwd()
+    cppFlag = False
+    javaFlag = False
+    pythonFlag = False
+    oracleFlag = False
+    shellFlag = False
+    xmlFlag = False
+    iniFlag = False
+    allFlag = False
+    excludedDirs = []
 
-sourceFiles = []
-try:
-    os.chdir(sourceDir)
-    sourceDir = os.getcwd()
-    res = os.popen(findCommand)
-    for line in res:
-        sourceFiles.append(line.strip())
-    res.close()
-except OSError as e:
-    print("Failed to get source dir entries: %s" % e)
-    sys.exit()
+    for opt, val in opts:
+        if opt in ("-c", "--cpp"):
+            cppFlag = True
+        if opt in ("-j", "--java"):
+            javaFlag = True
+        if opt in ("-p", "--python"):
+            pythonFlag = True
+        if opt in ("-o", "--oracle"):
+            oracleFlag = True
+        if opt in ("-s", "--shell"):
+            shellFlag = True
+        if opt in ("-x", "--xml"):
+            xmlFlag = True
+        if opt in ("-i", "--ini"):
+            iniFlag = True
+        if opt in ("-a", "--all"):
+            allFlag = True
+        if opt in ("-e", "--exclude"):
+            excludedDirs.append(val)
 
-targetFiles = []
-try:
-    os.chdir(cwd)
+    if not cppFlag and not javaFlag and not pythonFlag and not oracleFlag and not shellFlag and not xmlFlag and not iniFlag and not allFlag:
+        cppFlag = True
+
+    fileExtensions = []
+    if cppFlag or allFlag:
+        fileExtensions.extend(["h", "hpp", "c", "cpp", "cc"])
+    if javaFlag or allFlag:
+        fileExtensions.extend(["java"])
+    if pythonFlag or allFlag:
+        fileExtensions.extend(["py"])
+    if oracleFlag or allFlag:
+        fileExtensions.extend(["sql", "spc", "bdy"])
+    if shellFlag or allFlag:
+        fileExtensions.extend(["sh"])
+    if xmlFlag or allFlag:
+        fileExtensions.extend(["xml"])
+    if iniFlag or allFlag:
+        fileExtensions.extend(["ini"])
+
+    # Make "find" command
+    fileFilters = []
+    for fileExt in fileExtensions:
+        fileFilter = "-iname \"*." + fileExt + "\""
+        fileFilters.append(fileFilter)
+    excludeFilters = []
+    for excludedDir in excludedDirs:
+        excludeFilter = "! -path \"*/" + excludedDir + "/*\""
+        excludeFilters.append(excludeFilter)
+    findCommand = "find . -type f \\( " + " -or ".join(fileFilters) + " \\)"
+    if len(excludeFilters) > 0:
+        findCommand += " \\( " + " -and ".join(excludeFilters) + " \\)"
+
+    cwd = os.getcwd()
+
+    sourceFiles = []
+    try:
+        os.chdir(sourceDir)
+        sourceDir = os.getcwd()
+        res = os.popen(findCommand)
+        for line in res:
+            sourceFiles.append(line.strip())
+        res.close()
+    except OSError as e:
+        print("Failed to get source dir entries: %s" % e)
+        sys.exit()
+
+    targetFiles = []
+    try:
+        os.chdir(cwd)
+        os.chdir(targetDir)
+        targetDir = os.getcwd()
+        res = os.popen(findCommand)
+        for line in res:
+            targetFiles.append(line.strip())
+        res.close()
+    except OSError as e:
+        print("Failed to get source dir entries: %s" % e)
+        sys.exit()
+
+    sourceFileSet = set(sourceFiles)
+    targetFileSet = set(targetFiles)
+
+    newFiles = []
+    commonFiles = []
+    for targetFile in targetFiles:
+        if targetFile not in sourceFileSet:
+            newFiles.append(targetFile)
+        else:
+            commonFiles.append(targetFile)
+
+    deletedFiles = []
+    for sourceFile in sourceFiles:
+        if sourceFile not in targetFileSet:
+            deletedFiles.append(sourceFile)
+
+    print("New files:")
+    print("\"File name\" - \"File lines\"")
     os.chdir(targetDir)
-    targetDir = os.getcwd()
-    res = os.popen(findCommand)
-    for line in res:
-        targetFiles.append(line.strip())
-    res.close()
-except OSError as e:
-    print("Failed to get source dir entries: %s" % e)
-    sys.exit()
+    totalNewLineCount = 0
+    for newFile in newFiles:
+        fileLineCount = FileLineCount(newFile)
+        totalNewLineCount += fileLineCount
+        print("%s - %d" % (newFile, fileLineCount))
+    print("Total new lines: %d\n" % totalNewLineCount)
 
-sourceFileSet = set(sourceFiles)
-targetFileSet = set(targetFiles)
+    print("Deleted files:")
+    print("\"File name\" - \"File lines\"")
+    os.chdir(sourceDir)
+    totalDeletedLineCount = 0
+    for deletedFile in deletedFiles:
+        fileLineCount = FileLineCount(deletedFile)
+        totalDeletedLineCount += fileLineCount
+        print("%s - %d" % (deletedFile, fileLineCount))
+    print("Total deleted lines: %d\n" % totalDeletedLineCount)
 
-newFiles = []
-commonFiles = []
-for targetFile in targetFiles:
-    if targetFile not in sourceFileSet:
-        newFiles.append(targetFile)
-    else:
-        commonFiles.append(targetFile)
+    print("Different files:")
+    print("\"File name\" - \"Diff lines\"")
+    totalDiffLineCount = 0
+    for commonFile in commonFiles:
+        sourceFile = os.path.join(sourceDir, commonFile)
+        targetFile = os.path.join(targetDir, commonFile)
+        diffLineCount = DiffLineCount(sourceFile, targetFile)
+        totalDiffLineCount += diffLineCount
+        if diffLineCount > 0:
+            print("%s - %d" % (commonFile, diffLineCount))
+    print("Total different lines: %d\n" % totalDiffLineCount)
 
-deletedFiles = []
-for sourceFile in sourceFiles:
-    if sourceFile not in targetFileSet:
-        deletedFiles.append(sourceFile)
-
-print("New files:")
-print("\"File name\" - \"File lines\"")
-os.chdir(targetDir)
-totalLineCount = 0
-for newFile in newFiles:
-    fileLineCount = FileLineCount(newFile)
-    totalLineCount += fileLineCount
-    print("%s - %d" % (newFile, fileLineCount))
-print("Total new lines: %d\n" % totalLineCount)
-
-print("Deleted files:")
-print("\"File name\" - \"File lines\"")
-os.chdir(sourceDir)
-totalLineCount = 0
-for deletedFile in deletedFiles:
-    fileLineCount = FileLineCount(deletedFile)
-    totalLineCount += fileLineCount
-    print("%s - %d" % (deletedFile, fileLineCount))
-print("Total deleted lines: %d\n" % totalLineCount)
-
-print("Different files:")
-print("\"File name\" - \"Diff lines\"")
-totalLineCount = 0
-for commonFile in commonFiles:
-    sourceFile = sourceDir + "/" + commonFile
-    targetFile = targetDir + "/" + commonFile
-    diffLineCount = DiffLineCount(sourceFile, targetFile)
-    totalLineCount += diffLineCount
-    if diffLineCount > 0:
-        print("%s - %d" % (commonFile, diffLineCount))
-print("Total different lines: %d\n" % totalLineCount)
-
+    print("Line Sum: %d(+) + %d(-) + %d(M) = %d\n" % (totalNewLineCount, totalDeletedLineCount, totalDiffLineCount, totalNewLineCount + totalDeletedLineCount + totalDiffLineCount))
