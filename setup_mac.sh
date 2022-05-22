@@ -11,7 +11,7 @@ cat >> ~/.bashrc << EOF
 #My script begin
 export LANG=zh_CN.utf-8
 export LC_ALL=zh_CN.utf-8
-export PATH=${PATH}:/usr/local/sbin:/usr/sbin:/sbin:/Users/yintao/setup/utils
+export PATH=${PATH}:/usr/local/sbin:/usr/sbin:/sbin:/Users/yintao/setup/utils:/Users/yintao/setup/utils_mac
 export PS1='[\u@\h \w]$ '
 export PS2='> '
 export PS4='+ '
@@ -55,6 +55,12 @@ alias Utf8='export LANG=zh_CN.utf8 LANGUAGE=zh_CN.utf8 LC_ALL=zh_CN.utf8'
 alias vi='vim -p'
 alias vim='vim -p'
 alias Diff='diff -y -W 100'
+
+if [ -f ~/setup/utils_mac/setenv.sh ]
+then
+    source ~/setup/utils_mac/setenv.sh
+fi
+
 #My script end
 EOF
 

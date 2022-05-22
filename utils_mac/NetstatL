@@ -1,0 +1,2 @@
+#!/bin/sh
+netstat -a -p TCP -n | grep LISTEN
