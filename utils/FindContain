@@ -1,0 +1,19 @@
+#!/bin/bash
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [what] (where)"
+    exit
+fi
+
+WHAT=$1
+if [ $# -lt 2 ]
+then
+    WHERE="."
+else
+    WHERE="$2"
+fi
+
+cd "${WHERE}"
+grep -lr "${WHAT}" .
