@@ -4,15 +4,12 @@ sudo apt upgrade -y
 sudo apt install -y openssh-server
 sudo apt install -y git
 sudo apt install -y subversion
-sudo apt install -y lynx-cur
 sudo apt install -y make
 sudo apt install -y cmake
 sudo apt install -y gcc
 sudo apt install -y g++
 sudo apt install -y gdb
 sudo apt install -y pstack
-sudo apt install -y valgrind
-sudo apt install -y systemtap
 sudo apt install -y tree
 sudo apt install -y sysstat
 sudo apt install -y dstat
