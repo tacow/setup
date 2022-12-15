@@ -26,3 +26,4 @@ sudo apt install -y graphviz
 sudo apt install -y libstdc++-12-doc
 sudo apt install -y libssl-dev
 sudo apt install -y libssl-doc
+sudo apt install -y python3-pip
