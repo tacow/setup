@@ -1,0 +1,9 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -gt 0 ]
+then
+    sed -i 's/\t/    /g' $*
+else
+    sed -i 's/\t/    /g' *
+fi
