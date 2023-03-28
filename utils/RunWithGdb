@@ -1,0 +1,32 @@
+#!/bin/sh
+
+if [ $# -lt 1 ]
+then
+    echo "Usage: `basename $0` [Command Line]"
+    exit
+fi
+
+GDB="gdb"
+PROG_NAME=`basename $1`
+TIMESTAMP=`date "+%Y%m%d_%H%M%S"`
+OUTPUT_FILE="/tmp/RunWithGdb_${PROG_NAME}_${TIMESTAMP}"
+if [ -f ${OUTPUT_FILE} ]
+then
+    OUTPUT_FILE="${OUTPUT_FILE}_$$"
+fi
+
+echo -n "Run at: " > ${OUTPUT_FILE}
+date >> ${OUTPUT_FILE}
+
+echo -n "Command Line: " >> ${OUTPUT_FILE}
+echo "$*" >> ${OUTPUT_FILE}
+
+echo "GDB Output: " >> ${OUTPUT_FILE}
+$GDB --quiet -nx --args $* <<EOF 2>&1 |
+set width 0
+set height 0
+set pagination no
+run
+backtrace
+EOF
+egrep -v '^\(gdb\) ' >> ${OUTPUT_FILE}

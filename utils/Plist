@@ -1,0 +1,19 @@
+#!/bin/sh
+CMD_NAME=$(basename $0)
+
+if [ $# -lt 1 ]
+then
+    echo "${CMD_NAME} [Process Name]"
+    exit
+fi
+SPEC_PROC_NAME="$1"
+
+ps --no-headers -eo pid,comm | while read LINE
+do
+    PID=`echo -n ${LINE} | awk '{ print $1 }'`
+    PROC_NAME=`echo -n ${LINE} | awk '{ print $2 }'`
+    if [ "${PROC_NAME}" = "${SPEC_PROC_NAME}" ]
+    then
+        echo ${PID}
+    fi
+done
