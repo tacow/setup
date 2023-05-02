@@ -16,10 +16,8 @@ sudo yum install -y gcc-c++
 sudo yum install -y gdb
 sudo yum install -y cgdb
 sudo yum install -y pstack
-sudo yum install -y valgrind
 sudo yum install -y strace
 sudo yum install -y ltrace
-sudo yum install -y systemtap
 sudo yum install -y tree
 sudo yum install -y sysstat
 sudo yum install -y dstat
@@ -53,5 +51,4 @@ sudo yum install -y inxi
 sudo yum install -y aria2
 sudo yum install -y libasan
 sudo yum install -y libtsan
-#sudo yum install -y eclipse-cdt
 sudo debuginfo-install -y glibc
