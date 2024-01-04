@@ -1,0 +1,151 @@
+#!/usr/bin/python3
+# 抽取PL/SQL中的骨干信息，包括Insert、Merge、Update、Delete、Open For（游标）、Select
+import sys
+import re
+
+def split_sentences(filename):
+    with open(filename, 'r', encoding='gb18030') as file:
+        text = file.read()
+
+    sentences = text.split(';')
+    return sentences
+
+def remove_comments(text):
+    # 删除 /*注释*/
+    pattern1 = r"/\*.*?\*/"
+    cleaned_text = re.sub(pattern1, "", text, flags=re.DOTALL)
+    
+    # 删除 --注释
+    pattern2 = r"--.*?$"
+    cleaned_text = re.sub(pattern2, "", cleaned_text, flags=re.MULTILINE)
+    return cleaned_text
+
+def find_procedure(text):
+    pattern = r'procedure\s+(\w+)'
+    match = re.search(pattern, text, re.IGNORECASE)
+    if match:
+        return True, match.group(1)
+    else:
+        return False, ""
+    
+def find_function(text):
+    pattern = r'function\s+(\w+)'
+    match = re.search(pattern, text, re.IGNORECASE)
+    if match:
+        return True, match.group(1)
+    else:
+        return False, ""
+    
+def find_insert(text):
+    pattern = r'insert\s+.*?into\s+(\w+)'
+    match = re.search(pattern, text, re.IGNORECASE)
+    if match:
+        table_name = match.group(1)
+        return True, table_name
+    else:
+        return False, ""
+    
+def find_merge(text):
+    pattern = r'merge\s+.*?into\s+(\w+)'
+    match = re.search(pattern, text, re.IGNORECASE)
+    if match:
+        table_name = match.group(1)
+        return True, table_name
+    else:
+        return False, ""
+
+def find_update(text):
+    pattern = r'\bupdate\s+(\w+)'
+    match = re.search(pattern, text, re.IGNORECASE)
+    if match:
+        table_name = match.group(1)
+        return True, table_name
+    else:
+        return False, ""
+
+def find_delete(text):
+    pattern = r'delete\s+from\s+(\w+)'
+    match = re.search(pattern, text, re.IGNORECASE)
+    if match:
+        table_name = match.group(1)
+        return True, table_name
+    else:
+        return False, ""
+    
+def find_open_cursor(text):
+    pattern = r'open\s+(\w+)\s+for'
+    match = re.search(pattern, text, re.IGNORECASE)
+    if match:
+        cursor_name = match.group(1)
+        return True, cursor_name
+    else:
+        return False, ""
+    
+def find_select(text):
+    result = ""
+    is_select = False
+    do_output = False
+    while text:
+        if re.match(r"^select", text, re.IGNORECASE):
+            result += "SELECT ... "
+            is_select = True
+            do_output = False
+            text = text[len('select'):]
+            continue
+        if is_select and re.match(r"^from", text, re.IGNORECASE):
+            result += "FROM "
+            do_output = True
+            text = text[len('from'):]
+            continue
+        if is_select and re.match(r"^where", text, re.IGNORECASE):
+            result += "WHERE ... "
+            do_output = False
+            text = text[len('where'):]
+            continue
+        if do_output:
+            result += text[0]
+        text = text[1:]
+    return result
+
+if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        print("ExtractSQL [filename]")
+        sys.exit(1)
+
+    filename = sys.argv[1]
+    sentences = split_sentences(filename)
+    for sentence in sentences:
+        sentence = remove_comments(sentence)
+
+        found, procname = find_procedure(sentence)
+        if found:
+            print("***   PROCEDURE %s\n" % procname)
+
+        found, funcname = find_function(sentence)
+        if found:
+            print("***   FUNCTION %s\n" % funcname)
+
+        found_insert, insert_table_name = find_insert(sentence)
+        if found_insert:
+            print("INSERT INTO %s" % insert_table_name)
+
+        found_merge, merge_table_name = find_merge(sentence)
+        if found_merge:
+            print("MERGE INTO %s" % merge_table_name)
+        
+        found_update, update_table_name = find_update(sentence)
+        if found_update:
+            print("UPDATE %s SET ...\n" % update_table_name)
+        
+        found_delete, delete_table_name = find_delete(sentence)
+        if found_delete:
+            print("DELETE FROM %s WHERE ...\n" % delete_table_name)
+        
+        found_open_cursor, cursor_name = find_open_cursor(sentence)
+        if found_open_cursor:
+            print("OPEN %s FOR" % cursor_name)
+        
+        select_content = find_select(sentence)
+        if select_content:
+            print(select_content)
+            print()
