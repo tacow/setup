@@ -7,18 +7,25 @@ def split_sentences(filename):
     with open(filename, 'r', encoding='gb18030') as file:
         text = file.read()
 
+    text = remove_comments(text)
     sentences = text.split(';')
     return sentences
 
 def remove_comments(text):
     # 删除 /*注释*/
-    pattern1 = r"/\*.*?\*/"
-    cleaned_text = re.sub(pattern1, "", text, flags=re.DOTALL)
-    
+    start_index = text.find("/*")
+    while start_index != -1:
+        end_index = text.find("*/", start_index + 2)
+        if end_index != -1:
+            text = text[:start_index] + text[end_index + 2:]
+        else:
+            text = text[:start_index]
+        start_index = text.find("/*")
+
     # 删除 --注释
-    pattern2 = r"--.*?$"
-    cleaned_text = re.sub(pattern2, "", cleaned_text, flags=re.MULTILINE)
-    return cleaned_text
+    pattern = r"--.*?$"
+    text = re.sub(pattern, "", text, flags=re.MULTILINE)
+    return text
 
 def find_procedure(text):
     pattern = r'procedure\s+(\w+)'
@@ -115,8 +122,6 @@ if __name__ == '__main__':
     filename = sys.argv[1]
     sentences = split_sentences(filename)
     for sentence in sentences:
-        sentence = remove_comments(sentence)
-
         found, procname = find_procedure(sentence)
         if found:
             print("***   PROCEDURE %s\n" % procname)
