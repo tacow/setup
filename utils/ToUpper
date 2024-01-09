@@ -1,2 +1,13 @@
 #!/bin/sh
-tr [:lower:] [:upper:]
+if [ "$#" -gt 0 ]
+then
+    for f in $*
+    do
+        tmp_file=`mktemp`
+        cat $f | tr [:lower:] [:upper:] > ${tmp_file}
+        cp ${tmp_file} $f
+        rm ${tmp_file}
+    done
+else
+    tr [:lower:] [:upper:]
+fi
