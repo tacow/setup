@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# 抽取PL/SQL中的骨干信息，包括Insert、Merge、Update、Delete、Open For（游标）、Select
+# 抽取PL/SQL中的骨干信息，包括Insert、Merge、Update、Delete、Truncate、Open For（游标）、Select
 import sys
 import re
 
@@ -79,6 +79,15 @@ def find_delete(text):
     else:
         return False, ""
     
+def find_truncate(text):
+    pattern = r'truncate\s+table\s+(\w+)'
+    match = re.search(pattern, text, re.IGNORECASE)
+    if match:
+        table_name = match.group(1)
+        return True, table_name
+    else:
+        return False, ""
+    
 def find_open_cursor(text):
     pattern = r'open\s+(\w+)\s+for'
     match = re.search(pattern, text, re.IGNORECASE)
@@ -101,13 +110,9 @@ def find_select(text):
             continue
         if is_select and re.match(r"^from", text, re.IGNORECASE):
             result += "FROM "
+            is_select = False
             do_output = True
             text = text[len('from'):]
-            continue
-        if is_select and re.match(r"^where", text, re.IGNORECASE):
-            result += "WHERE ... "
-            do_output = False
-            text = text[len('where'):]
             continue
         if do_output:
             result += text[0]
@@ -145,6 +150,10 @@ if __name__ == '__main__':
         found_delete, delete_table_name = find_delete(sentence)
         if found_delete:
             print("DELETE FROM %s WHERE ...\n" % delete_table_name)
+        
+        found_truncate, truncate_table_name = find_truncate(sentence)
+        if found_truncate:
+            print("TRUNCATE TABLE %s\n" % truncate_table_name)
         
         found_open_cursor, cursor_name = find_open_cursor(sentence)
         if found_open_cursor:
