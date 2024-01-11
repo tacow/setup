@@ -99,6 +99,7 @@ def find_open_cursor(text):
     
 def find_select(text):
     result = ""
+    select_content = ""
     is_select = False
     do_output = False
     while text:
@@ -109,6 +110,13 @@ def find_select(text):
             text = text[len('select'):]
             continue
         if is_select and re.match(r"^from", text, re.IGNORECASE):
+            pattern = r'\binto\s+(\w+)'
+            match = re.search(pattern, select_content, re.IGNORECASE)
+            if match:
+                var_name = match.group(1)
+                result += ("INTO %s " % var_name)
+            select_content = ""
+            
             result += "FROM "
             is_select = False
             do_output = True
@@ -116,6 +124,8 @@ def find_select(text):
             continue
         if do_output:
             result += text[0]
+        if is_select:
+            select_content += text[0]
         text = text[1:]
     return result
 
@@ -127,39 +137,52 @@ if __name__ == '__main__':
     filename = sys.argv[1]
     sentences = split_sentences(filename)
     for sentence in sentences:
-        found, procname = find_procedure(sentence)
-        if found:
-            print("***   PROCEDURE %s\n" % procname)
+        found_any = False
 
-        found, funcname = find_function(sentence)
-        if found:
-            print("***   FUNCTION %s\n" % funcname)
+        found_proc, procname = find_procedure(sentence)
+        if found_proc:
+            print("***   PROCEDURE %s" % procname)
+            found_any = True
+
+        found_func, funcname = find_function(sentence)
+        if found_func:
+            print("***   FUNCTION %s" % funcname)
+            found_any = True
 
         found_insert, insert_table_name = find_insert(sentence)
         if found_insert:
             print("INSERT INTO %s" % insert_table_name)
+            found_any = True
 
         found_merge, merge_table_name = find_merge(sentence)
         if found_merge:
             print("MERGE INTO %s" % merge_table_name)
+            found_any = True
         
         found_update, update_table_name = find_update(sentence)
         if found_update:
-            print("UPDATE %s SET ...\n" % update_table_name)
+            print("UPDATE %s SET ..." % update_table_name)
+            found_any = True
         
         found_delete, delete_table_name = find_delete(sentence)
         if found_delete:
-            print("DELETE FROM %s WHERE ...\n" % delete_table_name)
+            print("DELETE FROM %s WHERE ..." % delete_table_name)
+            found_any = True
         
         found_truncate, truncate_table_name = find_truncate(sentence)
         if found_truncate:
-            print("TRUNCATE TABLE %s\n" % truncate_table_name)
+            print("TRUNCATE TABLE %s" % truncate_table_name)
+            found_any = True
         
         found_open_cursor, cursor_name = find_open_cursor(sentence)
         if found_open_cursor:
             print("OPEN %s FOR" % cursor_name)
+            found_any = True
         
         select_content = find_select(sentence)
         if select_content:
             print(select_content)
+            found_any = True
+
+        if found_any:
             print()
