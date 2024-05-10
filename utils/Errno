@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+import os
+import sys
+import errno
+
+def print_errno_error(errno_code=None):
+    if errno_code:
+        try:
+            print(f"errno {errno_code}: {os.strerror(errno_code)} ({errno.errorcode[errno_code]})")
+        except KeyError:
+            print(f"errno {errno_code} is not found")
+    else:
+        sorted_errno = sorted(errno.errorcode.items(), key=lambda x: x[0])
+        for key, value in sorted_errno:
+            print(f"errno {key}: {os.strerror(key)} ({value})")
+
+if __name__ == "__main__":
+    if len(sys.argv) == 1:
+        print_errno_error()
+    else:
+        errno_codes = []
+        for arg in sys.argv[1:]:
+            try:
+                errno_code = int(arg)
+                print_errno_error(errno_code)
+            except ValueError:
+                print(f"Invalid argument: {arg} is not a valid errno code")
