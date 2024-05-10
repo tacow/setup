@@ -4,8 +4,12 @@ import sys
 import re
 
 def split_sentences(filename):
-    with open(filename, 'r', encoding='gb18030') as file:
-        text = file.read()
+    try:
+        with open(filename, 'r', encoding='utf-8') as file:
+            text = file.read()
+    except UnicodeDecodeError:
+        with open(filename, 'r', encoding='gb18030') as file:
+            text = file.read()
 
     text = remove_comments(text)
     sentences = text.split(';')
