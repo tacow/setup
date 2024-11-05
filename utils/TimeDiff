@@ -1,0 +1,20 @@
+#!/bin/bash
+CMD_NAME=$(basename $0)
+
+if [ "$#" -ne 2 ]
+then
+  echo "$CMD_NAME [START_TIME] [END_TIME]"
+  exit 1
+fi
+START_TIME="$1"
+END_TIME="$2"
+
+# Convert time strings to timestamps (in seconds)
+START_TIMESTAMP=$(date -d "$START_TIME" +%s)
+END_TIMESTAMP=$(date -d "$END_TIME" +%s)
+
+# Calculate the difference in seconds
+DIFF_SECONDS=$((END_TIMESTAMP - START_TIMESTAMP))
+
+# Output the result
+echo "Time difference: $DIFF_SECONDS seconds"
