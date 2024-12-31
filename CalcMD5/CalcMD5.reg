@@ -1,0 +1,15 @@
+Windows Registry Editor Version 5.00
+
+; 为文件添加右键菜单项
+[HKEY_CLASSES_ROOT\*\shell\CalculateFileMD5]
+@="计算文件MD5值..."
+
+[HKEY_CLASSES_ROOT\*\shell\CalculateFileMD5\command]
+@="\"D:\\Downloads\\md5_calculator.exe\" \"%1\""
+
+; 为目录添加右键菜单项
+[HKEY_CLASSES_ROOT\Directory\shell\CalculateFolderMD5]
+@="计算文件MD5值..."
+
+[HKEY_CLASSES_ROOT\Directory\shell\CalculateFolderMD5\command]
+@="\"D:\\Downloads\\md5_calculator.exe\" \"%1\""

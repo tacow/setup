@@ -1,0 +1,7 @@
+Windows Registry Editor Version 5.00
+
+; 删除文件的右键菜单项
+[-HKEY_CLASSES_ROOT\*\shell\CalculateFileMD5]
+
+; 删除目录的右键菜单项
+[-HKEY_CLASSES_ROOT\Directory\shell\CalculateFolderMD5]

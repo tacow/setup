@@ -1,0 +1,2 @@
+git clone 'git@gitee.com:tacow/setup.git'
+git clone 'git@gitee.com:tacow/test.git'
